@@ -2,9 +2,37 @@
 
 <html>
 	<head>
-		<title>Testing</title>
+		<title>aquaBSD</title>
 	</head>
 	<body>
-		<h1>Testing</h1>
+		<h1>aquaBSD</h1>
+
+		<p>There's not much to see here at the moment, but stay tuned as this site will soon be updated with some more interesting content!</p>
+		<p>Video on aquaBSD: <a href = "https://youtu.be/KB-psq29hU0">https://youtu.be/KB-psq29hU0</a></p>
+
+		<h2>Installation</h2>
+
+		<p>Download aquaBSD image as an <a href = "https://github.com/inobulles/aquabsd/releases/download/v1.0-beta-0621a/aquabsd-beta-0621a.img.xz">XZ compressed image file</a> or alternatively as a <a href = "https://github.com/inobulles/aquabsd/releases/download/v1.0-beta-0621a/aquabsd-beta-0621a.zip">ZIP file containing the image</a>.</p>
+		<p>You can run the image in QEMU with:</p>
+		<pre>
+$ qemu-system-x86_64 -drive file=aquabsd-beta-0621a.img,format=raw
+		</pre>
+
+		<h2>Basic commands</h2>
+
+		<p>Poweroff the machine:</p>
+		<pre>
+# poweroff
+		</pre>
+
+		<p>List running processes:</p>
+		<pre>
+# top
+		</pre>
+
+		<p>Edit a text file (note that you can write in '/tmp/' as it's mounted as a memory disk):</p>
+		<pre>
+# edit
+		</pre>
 	</body>
 </html>
