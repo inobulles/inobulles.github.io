@@ -128,16 +128,19 @@
 			/* header stuff */
 
 			header {
+				margin: auto;
 				position: relative;
 				top: 0;
 				left: 0;
+
+				max-width: 1400px;
 				width: 100vw;
 
 				min-height: 600px;
 				height: 100vh;
 
 				display: grid;
-				grid-auto-flow: column;
+				grid-auto-flow: column dense;
 			}
 
 			header .title-container {
@@ -149,6 +152,10 @@
 			header .graphic-container {
 				margin: auto;
 				padding: 32px;
+			}
+
+			header .title-container h1 {
+				margin-top: 0;
 			}
 
 			header .title-container p {
@@ -179,6 +186,7 @@
 
 			header .graphic-container svg {
 				color: #0f0;
+				max-width: 600px;
 			}
 
 			b {
@@ -199,12 +207,12 @@
 			</div>
 
 			<div class = "graphic-container">
-				<svg width = "800" height = "500" xmlns = "http://www.w3.org/2000/svg">
+				<svg viewBox = "0 0 800 600" xmlns = "http://www.w3.org/2000/svg">
 					<g>
-						<rect rx = "24" width = "800" height = "400" x = "0"   y = "0"   fill = "#222" />
-						<rect rx = "24" width = "400" height = "48"  x = "200" y = "476" fill = "#222" />
-						<rect           width = "24"  height = "200" x = "388" y = "300" fill = "#222" />
-						<rect rx = "12" width = "752" height = "352" x = "24"  y = "24"  fill = "#fff" />
+						<rect rx = "24" width = "800" height = "500" x = "0"   y = "0"   fill = "#222" />
+						<rect rx = "24" width = "400" height = "48"  x = "200" y = "576" fill = "#222" />
+						<rect           width = "24"  height = "200" x = "388" y = "400" fill = "#222" />
+						<rect rx = "12" width = "752" height = "452" x = "24"  y = "24"  fill = "#000" />
 					</g>
 				</svg>
 			</div>
