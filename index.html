@@ -147,24 +147,25 @@
 
 			header {
 				margin: auto;
+				padding: 16px;
 				position: relative;
 				top: 0;
 				left: 0;
 
 				max-width: 1200px;
-				width: 100vw;
 
 				min-height: 600px;
 				height: 100vh;
 
 				display: grid;
-				grid-auto-flow: column;
+				justify-content: center;
+				grid-template-columns: repeat(auto-fill, minmax(0, 600px));
 			}
 
 			header .title-container {
 				max-width: 500px;
 				margin: auto;
-				padding: 32px;
+				padding: 16px;
 			}
 
 			header .title-container h1 {
@@ -195,8 +196,6 @@
 
 			header .graphic-container {
 				position: relative;
-				max-width: 600px;
-				padding: 0;
 				margin: auto;
 			}
 
