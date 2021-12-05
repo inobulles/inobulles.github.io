@@ -22,6 +22,7 @@
 
 		<style>
 			:root {
+				--monitor-bleed: rgba(183, 0, 255, 0.46);
 				--gradient: -webkit-linear-gradient(50deg, rgb(126, 119, 255), rgb(255, 34, 137));
 				--background-colour: #ffffff;
 				--title-colour: #000000;
@@ -29,7 +30,7 @@
 				--article-colour: #ffffff;
 				--accent-colour: #4385f5;
 				--muted-colour: #555555;
-				--shadow-colour: #00000050;
+				--shadow-colour: rgba(183, 0, 255, 0.487);
 				--border-radius: 6px;
 				--blur-radius: 0px;
 			}
@@ -40,14 +41,15 @@
 
 			@media (prefers-color-scheme: dark) {
 				:root {
-					--gradient: -webkit-linear-gradient(50deg, #7f7, #ff7);
+					--monitor-bleed: rgba(183, 0, 255, 0.172);
+					--gradient: -webkit-linear-gradient(50deg, rgb(216, 58, 255), rgb(106, 0, 255));
 					--background-colour: #000000;
 					--title-colour: #ffffff;
 					--text-colour: #dddddd;
 					--article-colour: #00000033;
 					--accent-colour: #98beff;
 					--muted-colour: #999999;
-					--shadow-colour: #00000040;
+					--shadow-colour: #59008c67;
 					--border-radius: 6px;
 					--blur-radius: 96px;
 				}
@@ -60,6 +62,9 @@
 			}
 
 			body {
+				background-image: url(bg.svg);
+				background-size: cover;
+
 				margin: 0;
 
 				background-color: var(--background-colour);
@@ -150,12 +155,6 @@
 				padding: 32px;
 			}
 
-			header .graphic-container {
-				filter: drop-shadow(var(--shadow-colour) 0 8px 32px);
-				padding: 0;
-				margin: auto;
-			}
-
 			header .title-container h1 {
 				margin-top: 0;
 			}
@@ -182,15 +181,22 @@
 				font-weight: bold;
 			}
 
-			header .graphic-container .monitor-graphic {
+			header .graphic-container {
+				position: relative;
 				max-width: 600px;
+				padding: 0;
+				margin: auto;
+			}
+
+			header .graphic-container .monitor-graphic {
+				filter: drop-shadow(var(--monitor-bleed) 0 8px 32px);
 			}
 
 			header .graphic-container .monitor-content {
 				/* <rect rx = "12" width = "752" height = "452" x = "24" y = "24" fill = "#000" /> */
 
 				position: absolute;
-
+				
 				left: 3%; /* 24 / 800 */
 				top: 4%; /* 24 / 600 */
 
@@ -223,7 +229,7 @@
 		<header>
 			<div class = "title-container">
 				<h1>aquaBSD <b>1.0 Alps</b>.</h1>
-				<p>A general purpose operating system aimed at making everything simply <b>better</b> in every single possible way. For the meantime, there isn't much to see here, but tune in on December 25<sup>th</sup> to watch the <b>2021 Winter Presentation</b>.</p>
+				<p>A general purpose operating system aimed at making everything simply <b>better</b> in every single possible way. For the moment, there isn't much to see here, but tune in on December 25<sup>th</sup> to watch the <b>2021 Winter Presentation</b>.</p>
 				<button>Install 🤘</button>
 			</div>
 
