@@ -1,13 +1,236 @@
 <!DOCTYPE html>
 
+<!-- different languages are set by the server when constructing the HTTP response -->
+<!-- the server knows which one to use in advance thanks to the 'Accept-Language' HTTP header -->
+
 <html>
 	<head>
-		<title>aquaBSD</title>
+		<title>aquaBSD Website - Prototype</title>
+
+		<!-- charset must be within the first 1024 bytes of the document -->
+		<meta charset = "UTF-8">
+
+		<!-- mobile stuff -->
+
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1" />
+
+		<!-- description should be no longer than 275 characters (as per Google's 2017 max length on the SERP) -->
+
+		<meta name = "description" content = "This is a prototype webpage for aquaBSD." />
+		<meta name = "keywords" content = "aquaBSD,OS" />
+		<meta name = "robots" content = "index,follow" />
+
+		<style>
+			:root {
+				--gradient: -webkit-linear-gradient(50deg, rgb(126, 119, 255), rgb(255, 34, 137));
+				--background-colour: #ffffff;
+				--title-colour: #000000;
+				--text-colour: #000000;
+				--article-colour: #ffffff;
+				--accent-colour: #4385f5;
+				--muted-colour: #555555;
+				--shadow-colour: #00000050;
+				--border-radius: 6px;
+				--blur-radius: 0px;
+			}
+
+			@media (prefers-color-scheme: light) {
+				/* leave it as default */
+			}
+
+			/* @media (prefers-color-scheme: dark) {
+				:root {
+					--gradient: -webkit-linear-gradient(50deg, #7f7, #ff7);
+					--background-colour: #000000;
+					--title-colour: #ffffff;
+					--text-colour: #dddddd;
+					--article-colour: #00000033;
+					--accent-colour: #98beff;
+					--muted-colour: #999999;
+					--shadow-colour: #00000040;
+					--border-radius: 6px;
+					--blur-radius: 96px;
+				}
+			} */
+
+			/* TODO media selectors for increased contrast ('prefers-contrast'), reduced motion ('prefers-reduced-motion'), reduced transparency ('prefers-reduced-transparency') */
+
+			html, body {
+				overflow-x: hidden;
+			}
+
+			body {
+				margin: 0;
+
+				background-color: var(--background-colour);
+				color: var(--text-colour);
+
+				font-size: 22px;
+				font-display: optional;
+				font-family: "Montserrat", sans-serif;
+				overflow-y: hidden;
+			}
+
+			article {
+				box-shadow: var(--shadow-colour) 0 8px 32px;
+				position: relative;
+				z-index: 1;
+				backdrop-filter: blur(var(--blur-radius));
+				-webkit-backdrop-filter: blur(var(--blur-radius));
+				border-top-left-radius: var(--border-radius);
+				border-top-right-radius: var(--border-radius);
+				background-color: var(--article-colour);
+				max-width: 800px;
+				margin: auto;
+				padding: 32px;
+				padding-top: 16px;
+			}
+
+			h1 {
+				color: var(--title-colour);
+				font-size: 70px;
+				font-display: optional;
+				font-family: "Montserrat", sans-serif;
+			}
+
+			h2 {
+				color: var(--title-colour);
+				font-size: 24px;
+				font-display: optional;
+				font-family: "Roboto Slab", serif;
+			}
+
+			a {
+				color: var(--accent-colour);
+				text-decoration: none;
+			}
+
+			q, blockquote {
+				font-style: italic;white-space: pre-wrap;
+				padding-left: 42px;
+			}
+
+			pre {
+				margin: 32px;
+				white-space: pre-wrap;
+				white-space: -moz-pre-wrap;
+				white-space: -pre-wrap;
+				white-space: -o-pre-wrap;
+				word-wrap: break-word;
+			}
+
+			footer {
+				text-align: center;
+				box-shadow: var(--shadow-colour) 0 8px 32px;
+				border-top-left-radius: var(--border-radius);
+				border-top-right-radius: var(--border-radius);
+				background-color: var(--accent-colour);
+				color: var(--background-colour);
+				padding: 32px;
+				margin: -32px;
+				margin-top: 32px;
+			}
+
+			footer p {
+				text-align: center;
+			}
+
+			footer a {
+				color: var(--background-colour);
+				text-decoration: underline;
+			}
+
+			/* header stuff */
+
+			header {
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				max-height: 60vh;
+				display: grid;
+			}
+
+			header .title-container {
+				max-width: 700px;
+				height: 70vh;
+				margin: auto;
+				padding: 32px;
+			}
+
+			header .title-container p {
+				margin-right: 150px;
+			}
+
+			header .title-container button {
+				background: var(--gradient);
+				color: var(--background-colour);
+				box-shadow: var(--shadow-colour) 0 8px 32px;
+				border: none;
+				border-radius: 48px;
+				padding: 8px;
+				padding-left: 32px; 
+				padding-right: 32px; 
+				margin: 24px;
+				margin-left: 0;
+
+				font-size: 24px;
+				font-display: optional;
+				font-family: "Montserrat", sans-serif;
+				font-weight: bold;
+			}
+
+			header .image-container {
+				position: relative;
+				overflow: hidden;
+				max-height: 60vh;
+			}
+
+			header .image-container::after {
+				content: '';
+				position: absolute;
+
+				width: 100%;
+				height: 100%;
+
+				top: 0;
+				left: 0;
+
+				background-image: linear-gradient(0, rgba(0,0,0,1) 0, rgba(255,255,255,0) 30vh);
+			}
+
+			header .image-container img {
+				position: relative;
+				left: 50%;
+				transform: translate(-50%);
+				filter: brightness(0.5) blur(5px);
+				margin: -10px;
+				height: auto;
+				min-height: 30vh;
+				min-width: 100%;
+			}
+
+			b {
+				background: var(--gradient);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				font-weight: bold;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>aquaBSD</h1>
+		<header>
+			<div class = "title-container">
+				<h1>aquaBSD <b>1.0 Alps</b></h1>
+				<p>A general purpose operating system aimed at making everything simply <b>better</b> in every single possible way. For the meantime, there isn't much to see here, but tune in on December 25<sup>th</sup> to watch the <b>2021 Winter Presentation</b>.</p>
+				<button>Install!</button>
+			</div>
+		</header>
 
-		<p>There's not much to see here at the moment, but stay tuned as this site will soon be updated with some more interesting content!</p>
+		
+
+		<!-- <p>There's not much to see here at the moment, but stay tuned as this site will soon be updated with some more interesting content!</p>
 		<p>Video on aquaBSD: <a href = "https://youtu.be/KB-psq29hU0">https://youtu.be/KB-psq29hU0</a></p>
 
 		<h2>Installation</h2>
@@ -38,6 +261,6 @@ $ qemu-system-x86_64 -drive file=aquabsd-beta-0621a.img,format=raw
 		<p>Edit a text file (note that you can write in '/tmp/' as it's mounted as a memory disk):</p>
 		<pre>
 # edit
-		</pre>
+		</pre> -->
 	</body>
 </html>
