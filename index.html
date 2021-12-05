@@ -202,6 +202,8 @@
 
 			header .graphic-container .monitor-graphic {
 				filter: drop-shadow(var(--monitor-bleed) 0 8px 32px);
+				width: 100%;
+				height: 100%;
 			}
 
 			header .graphic-container .monitor-content {
@@ -243,11 +245,13 @@
 			<div class = "title-container">
 				<h1>aquaBSD <b>1.0 Alps</b>.</h1>
 				<p>A general purpose operating system aimed at making everything simply <b>better</b> in every single possible way. For the moment, there isn't much to see here, but tune in on December 25<sup>th</sup> to watch the <b>2021 Winter Presentation</b>.</p>
-				<button>Install 🤘</button>
+				<button>Let's rock 🤘</button>
 			</div>
 
 			<div class = "graphic-container">
-				<svg class = "monitor-graphic" viewBox = "0 0 800 600" xmlns = "http://www.w3.org/2000/svg">
+				<!-- it is important to set width & height to the same values as the viewBox for this to work on Chrome -->
+				<!-- no clue why, see https://stackoverflow.com/questions/39056537/why-don-t-svg-images-scale-using-the-css-width-property -->
+				<svg width = "800px" height = "600px" class = "monitor-graphic" viewBox = "0 0 800 600" xmlns = "http://www.w3.org/2000/svg">
 					<rect rx = "24" width = "800" height = "500" x = "0"   y = "0"   fill = "#222" />
 					<rect rx = "24" width = "400" height = "48"  x = "200" y = "576" fill = "#222" />
 					<rect           width = "24"  height = "200" x = "388" y = "400" fill = "#222" />
