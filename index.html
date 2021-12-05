@@ -38,7 +38,7 @@
 				/* leave it as default */
 			}
 
-			/* @media (prefers-color-scheme: dark) {
+			@media (prefers-color-scheme: dark) {
 				:root {
 					--gradient: -webkit-linear-gradient(50deg, #7f7, #ff7);
 					--background-colour: #000000;
@@ -51,7 +51,7 @@
 					--border-radius: 6px;
 					--blur-radius: 96px;
 				}
-			} */
+			}
 
 			/* TODO media selectors for increased contrast ('prefers-contrast'), reduced motion ('prefers-reduced-motion'), reduced transparency ('prefers-reduced-transparency') */
 
@@ -69,21 +69,6 @@
 				font-display: optional;
 				font-family: "Montserrat", sans-serif;
 				overflow-y: hidden;
-			}
-
-			article {
-				box-shadow: var(--shadow-colour) 0 8px 32px;
-				position: relative;
-				z-index: 1;
-				backdrop-filter: blur(var(--blur-radius));
-				-webkit-backdrop-filter: blur(var(--blur-radius));
-				border-top-left-radius: var(--border-radius);
-				border-top-right-radius: var(--border-radius);
-				background-color: var(--article-colour);
-				max-width: 800px;
-				margin: auto;
-				padding: 32px;
-				padding-top: 16px;
 			}
 
 			h1 {
@@ -147,13 +132,21 @@
 				top: 0;
 				left: 0;
 				width: 100vw;
-				max-height: 60vh;
+
+				min-height: 600px;
+				height: 100vh;
+
 				display: grid;
+				grid-auto-flow: column;
 			}
 
 			header .title-container {
 				max-width: 700px;
-				height: 70vh;
+				margin: auto;
+				padding: 32px;
+			}
+
+			header .graphic-container {
 				margin: auto;
 				padding: 32px;
 			}
@@ -180,34 +173,12 @@
 				font-weight: bold;
 			}
 
-			header .image-container {
-				position: relative;
-				overflow: hidden;
-				max-height: 60vh;
+			header .graphic-container {
+				filter: drop-shadow(var(--shadow-colour) 0 8px 32px);
 			}
 
-			header .image-container::after {
-				content: '';
-				position: absolute;
-
-				width: 100%;
-				height: 100%;
-
-				top: 0;
-				left: 0;
-
-				background-image: linear-gradient(0, rgba(0,0,0,1) 0, rgba(255,255,255,0) 30vh);
-			}
-
-			header .image-container img {
-				position: relative;
-				left: 50%;
-				transform: translate(-50%);
-				filter: brightness(0.5) blur(5px);
-				margin: -10px;
-				height: auto;
-				min-height: 30vh;
-				min-width: 100%;
+			header .graphic-container svg {
+				color: #0f0;
 			}
 
 			b {
@@ -224,7 +195,18 @@
 			<div class = "title-container">
 				<h1>aquaBSD <b>1.0 Alps</b></h1>
 				<p>A general purpose operating system aimed at making everything simply <b>better</b> in every single possible way. For the meantime, there isn't much to see here, but tune in on December 25<sup>th</sup> to watch the <b>2021 Winter Presentation</b>.</p>
-				<button>Install!</button>
+				<button>Install 🤘</button>
+			</div>
+
+			<div class = "graphic-container">
+				<svg width = "800" height = "500" xmlns = "http://www.w3.org/2000/svg">
+					<g>
+						<rect rx = "24" width = "800" height = "400" x = "0"   y = "0"   fill = "#222" />
+						<rect rx = "24" width = "400" height = "48"  x = "200" y = "476" fill = "#222" />
+						<rect           width = "24"  height = "200" x = "388" y = "300" fill = "#222" />
+						<rect rx = "12" width = "752" height = "352" x = "24"  y = "24"  fill = "#fff" />
+					</g>
+				</svg>
 			</div>
 		</header>
 
