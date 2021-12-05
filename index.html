@@ -33,6 +33,8 @@
 				--shadow-colour: rgba(183, 0, 255, 0.487);
 				--border-radius: 6px;
 				--blur-radius: 0px;
+				--navbar-colour: #fffa;
+				--navbar-shadow: rgba(183, 0, 255, 0.1) 0 8px 32px;
 			}
 
 			.dark {
@@ -56,6 +58,8 @@
 					--shadow-colour: #ff00cc29;
 					--border-radius: 6px;
 					--blur-radius: 96px;
+					--navbar-colour: #000c;
+					--navbar-shadow: rgba(183, 0, 255, 0.05) 0 8px 32px;
 				}
 
 				.dark {
@@ -149,8 +153,8 @@
 				margin: auto;
 				padding: 16px;
 				position: relative;
-				top: 0;
-				left: 0;
+
+				margin-top: 48px; /* accommodate for the navbar */
 
 				max-width: 1200px;
 
@@ -237,9 +241,50 @@
 				-webkit-text-fill-color: transparent;
 				font-weight: bold;
 			}
+
+			/* navbar stuff */
+
+			.navbar {
+				position: fixed;
+				z-index: 100;
+
+				width: 100vw;
+
+				/* box-shadow: var(--navbar-shadow); */
+				background-color: var(--navbar-colour);
+				backdrop-filter: blur(20px);
+
+				display: grid;
+				justify-content: center;
+				grid-auto-flow: column;
+				grid-gap: 16px;
+
+				padding: 12px;
+			}
+
+			.navbar * {
+				margin: auto;
+			}
+
+			.navbar p {
+				font-size: 18px;
+			}
+
+			.navbar-logo {
+				height: 100%;
+				max-height: 32px;
+				stroke: var(--text-colour);
+			}
 		</style>
 	</head>
 	<body>
+		<div class = "navbar">
+			<svg class = "navbar-logo" viewBox = "0 0 144 144" xmlns = "http://www.w3.org/2000/svg" fill = "none">
+				<path transform = "rotate(180 72 72)" d = "m22,115l50,-88l50,88l-100,0z" stroke-width = "20"/>
+			</svg>
+			<p><b>aquaBSD</b></p>
+		</div>
+
 		<header>
 			<div class = "title-container">
 				<h1>aquaBSD <b>1.0 Alps</b>.</h1>
