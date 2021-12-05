@@ -134,25 +134,26 @@
 				top: 0;
 				left: 0;
 
-				max-width: 1400px;
+				max-width: 1200px;
 				width: 100vw;
 
 				min-height: 600px;
 				height: 100vh;
 
 				display: grid;
-				grid-auto-flow: column dense;
+				grid-auto-flow: column;
 			}
 
 			header .title-container {
-				max-width: 700px;
+				max-width: 500px;
 				margin: auto;
 				padding: 32px;
 			}
 
 			header .graphic-container {
+				filter: drop-shadow(var(--shadow-colour) 0 8px 32px);
+				padding: 0;
 				margin: auto;
-				padding: 32px;
 			}
 
 			header .title-container h1 {
@@ -160,7 +161,7 @@
 			}
 
 			header .title-container p {
-				margin-right: 150px;
+				margin-right: 50px;
 			}
 
 			header .title-container button {
@@ -181,28 +182,32 @@
 				font-weight: bold;
 			}
 
-			header .graphic-container {
-				filter: drop-shadow(var(--shadow-colour) 0 8px 32px);
-				padding: 0;
-			}
-
-			header .graphic-container svg {
-				color: #0f0;
+			header .graphic-container .monitor-graphic {
 				max-width: 600px;
 			}
 
-			header .graphic-container img {
+			header .graphic-container .monitor-content {
 				/* <rect rx = "12" width = "752" height = "452" x = "24" y = "24" fill = "#000" /> */
 
 				position: absolute;
 
-				top: 4%; /* 24 / 800 */
-				left: 3%; /* 24 / 600 */
+				left: 3%; /* 24 / 800 */
+				top: 4%; /* 24 / 600 */
 
 				width: 94%; /* 752 / 800 */
 				height: 74.4%; /* 452 / 600 */
 
 				border-radius: 1.6%/2.65%; /* 12 / 752 & 12 / 452 */
+			}
+
+			header .graphic-container .monitor-logo {
+				position: absolute;
+
+				left: 50%; /* 400 / 800 */
+				top: 41.67%; /* 250 / 600 */
+
+				width: 20%;
+				transform: translate(-50%, -50%);
 			}
 
 			b {
@@ -217,18 +222,21 @@
 	<body>
 		<header>
 			<div class = "title-container">
-				<h1>aquaBSD <b>1.0 Alps</b></h1>
+				<h1>aquaBSD <b>1.0 Alps</b>.</h1>
 				<p>A general purpose operating system aimed at making everything simply <b>better</b> in every single possible way. For the meantime, there isn't much to see here, but tune in on December 25<sup>th</sup> to watch the <b>2021 Winter Presentation</b>.</p>
 				<button>Install 🤘</button>
 			</div>
 
 			<div class = "graphic-container">
-				<svg viewBox = "0 0 800 600" xmlns = "http://www.w3.org/2000/svg">
+				<svg class = "monitor-graphic" viewBox = "0 0 800 600" xmlns = "http://www.w3.org/2000/svg">
 					<rect rx = "24" width = "800" height = "500" x = "0"   y = "0"   fill = "#222" />
 					<rect rx = "24" width = "400" height = "48"  x = "200" y = "576" fill = "#222" />
 					<rect           width = "24"  height = "200" x = "388" y = "400" fill = "#222" />
 				</svg>
-				<img src = "https://thumbs.dreamstime.com/b/dog-golden-retriever-jumping-autumn-leaves-autumnal-sunlight-77861618.jpg" />
+				<img class = "monitor-content" src = "wp.png" />
+				<svg class = "monitor-logo" viewBox = "0 0 144 144" xmlns = "http://www.w3.org/2000/svg" fill = "none">
+					<path transform = "rotate(180 72 72)" d = "m22,115l50,-88l50,88l-100,0z" stroke-width = "20" stroke = "#fff"/>
+				</svg>
 			</div>
 		</header>
 
