@@ -7,6 +7,7 @@
 </keywords>
 <styles>
 	<css src = "main.css" />
+	<css src = "docs.css" />
 	<css src = "navbar.css" />
 </styles>
 
@@ -16,8 +17,26 @@
 
 	<body>
 		<component src = "navbar.html" />
-		<!-- <component src = "docs/sidebar.html" /> -->
 
-		<h2><b>aquaBSD</b> Developer Documentation</h2>
+		<div class = "docs-container">
+			<component src = "docs/sidebar.html" />
+			<div class = "docs">
+				<!-- TODO make this load markdown instead with perhaps a "markdown" tag or something of the sorts -->
+
+				<h1><b>aquaBSD</b> Developer Documentation</h1>
+				<h2>Introduction</h2>
+				<p>Welcome to <b>aquaBSD</b>'s Developer Documentation!, Here, you'll find the information necessary to understand <b>aquaBSD</b> as a system and learn how to develop for it</p>
+
+				<h2>Setting up a development environment with <code>aqua-unix</code></h2>
+				<p><code>aqua-unix</code> is a script which automatically downloads, compiles, and installs all the necessary components for developing <b>AQUA</b> applications and devices on UNIX-based systems. You do <i>not</i> necessarily have to be running an <b>aquaBSD</b> system for this to work - many other closely POSIX-compliant systems such as Linux will do fine too - but it is recommended for later steps.</p>
+				<p>For full documentation, please consult the <code>README.md</code> file on the official <a href = "https://github.com/inobulles/aqua-unix">GitHub repository</a>.</p>
+				<p>To download <code>aqua-unix</code> and compile the KOS, <code>aquabsd-manager</code>, <code>iar</code>, and the devices from the <code>aquabsd.alps</code> devbranch, run:</p>
+				<pre>
+% git clone https://github.com/inobulles/aqua-unix
+% cd aqua-unix
+% sh build.sh --kos --manager --devices --devbranch aquabsd.alps --install
+				</pre>
+			</div>
+		</div>
 	</body>
 </html>

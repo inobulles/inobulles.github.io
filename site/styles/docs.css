@@ -1,0 +1,58 @@
+.docs-container {
+	margin: auto;
+	margin-top: 64px; /* give us a bit more room */
+	max-width: 1200px;
+
+	display: grid;
+	justify-content: center;
+	grid-template-columns: 1fr 3fr;
+}
+
+.docs {
+	max-width: 900px;
+}
+
+.sidebar {
+	min-width: 250px;
+	
+	position: fixed;
+	padding: 16px;
+
+	display: grid;
+	justify-content: center;
+	grid-auto-flow: row;
+	grid-gap: 32px;
+
+	padding-top: 64px;
+}
+
+.sidebar * {
+	margin: auto;
+	display: grid;
+	justify-content: left;
+	grid-auto-flow: column;
+	grid-gap: 8px;
+}
+
+.sidebar p {
+	font-size: 18px;
+}
+
+.sidebar-item {
+	color: var(--text-colour);
+	width: 100%;
+	height: 100%;
+}
+
+.sidebar-item div svg {
+	fill: var(--text-colour);
+}
+
+code {
+	border-radius: 8px;
+	background-color: #111;
+}
+
+pre {
+	white-space: pre-wrap;
+}
