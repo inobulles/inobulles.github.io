@@ -12,6 +12,7 @@
 	--blur-radius: 0px;
 	--navbar-colour: #fffa;
 	--navbar-shadow: rgba(183, 0, 255, 0.1) 0 8px 32px;
+	--code-background: #ddd;
 }
 
 .dark {
@@ -37,6 +38,7 @@
 		--blur-radius: 96px;
 		--navbar-colour: #000c;
 		--navbar-shadow: rgba(183, 0, 255, 0.05) 0 8px 32px;
+		--code-background: #111;
 	}
 
 	.dark {
@@ -131,4 +133,13 @@ b {
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 	font-weight: bold;
+}
+
+code {
+	border-radius: 8px;
+	background-color: var(--code-background);
+}
+
+pre {
+	white-space: pre-wrap;
 }

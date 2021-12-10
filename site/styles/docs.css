@@ -47,12 +47,3 @@
 .sidebar-item div svg {
 	fill: var(--text-colour);
 }
-
-code {
-	border-radius: 8px;
-	background-color: #111;
-}
-
-pre {
-	white-space: pre-wrap;
-}
