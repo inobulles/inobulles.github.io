@@ -1,5 +1,6 @@
 import os
 import pathlib
+import shutil
 
 import log
 from page import Page
@@ -11,18 +12,18 @@ class File_manager:
 	def __init__(self, root = DEFAULT_ROOT, out = DEFAULT_OUT):
 		self.root = root
 		self.out = out
-	
+
 	def __read(self, type_name, type_dir, name):
 		path = pathlib.Path(self.root, type_dir, name)
 
 		try:
 			with open(path) as f:
 				return f.read()
-		
+
 		except FileNotFoundError:
 			log.fatal(f"Failed to load {type_name} {name} ({path})")
 			return ""
-		
+
 		except Exception:
 			log.internal_fatal()
 
@@ -36,10 +37,10 @@ class File_manager:
 		for dirpath, dirnames, filenames in os.walk(path):
 			for filename in filenames:
 				src_path = pathlib.Path(dirpath, filename)
-				
+
 				if filename.split('.')[-1] != "html":
 					log.warn(f"Found non-HTML file ({src_path})")
-				
+
 				yield src_path
 
 	def walk(self):
@@ -63,13 +64,9 @@ class File_manager:
 		for page in pages: # TODO progress bar
 			page.process()
 
-		log.info("Creating output directory structure")
+		log.info("Creating output directory structure by first copying resources tree")
 
-		try:
-			os.mkdir(self.out)
-		
-		except FileExistsError:
-			log.fatal(f"Output directory '{self.out}' already exists")
+		shutil.copytree(pathlib.Path(self.root, "res"), self.out)
 
 		for dirpath, dirnames, filenames in os.walk(path):
 			for dirname in dirnames:
