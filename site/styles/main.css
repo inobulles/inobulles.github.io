@@ -8,9 +8,9 @@
 	--accent-colour: #4385f5;
 	--muted-colour: #555555;
 	--shadow-colour: rgba(183, 0, 255, 0.487);
-	--border-radius: 6px;
+	--border-radius: 12px;
 	--blur-radius: 0px;
-	--navbar-colour: #fffa;
+	--navbar-colour: #ffff;
 	--navbar-shadow: rgba(183, 0, 255, 0.1) 0 8px 32px;
 	--code-background: #ddd;
 }
@@ -34,9 +34,8 @@
 		--accent-colour: #98beff;
 		--muted-colour: #999999;
 		--shadow-colour: #ff00cc29;
-		--border-radius: 6px;
 		--blur-radius: 96px;
-		--navbar-colour: #000c;
+		--navbar-colour: #000f;
 		--navbar-shadow: rgba(183, 0, 255, 0.05) 0 8px 32px;
 		--code-background: #111;
 	}
@@ -80,14 +79,16 @@ h1 {
 
 h2 {
 	color: var(--title-colour);
+	font-size: 40px;
+	font-display: optional;
+	font-family: "Montserrat", sans-serif;
+}
+
+h3 {
+	color: var(--title-colour);
 	font-size: 24px;
 	font-display: optional;
 	font-family: "Roboto Slab", serif;
-}
-
-a {
-	color: var(--accent-colour);
-	text-decoration: none;
 }
 
 q, blockquote {
@@ -104,7 +105,7 @@ pre {
 	white-space: -o-pre-wrap;
 	word-wrap: break-word;
 }
-
+/*
 footer {
 	text-align: center;
 	box-shadow: var(--shadow-colour) 0 8px 32px;
@@ -124,9 +125,9 @@ footer p {
 footer a {
 	color: var(--background-colour);
 	text-decoration: underline;
-}
+} */
 
-b {
+strong {
 	/* text-shadow: rgba(255, 0, 191, 0.534) 0 0 16px; */
 	background: var(--gradient);
 	-webkit-background-clip: text;
@@ -142,4 +143,97 @@ code {
 
 pre {
 	white-space: pre-wrap;
+}
+
+/* info containers */
+
+.info-container {
+	max-width: 400px;
+	margin: 32px;
+}
+
+.info-container p {
+	margin-inline: 16px;
+	margin-block: 32px;
+
+	text-align: justify;
+	font-size: 18px;
+}
+
+.labeled-img {
+	max-width: 100%;
+	position: relative;
+}
+
+.labeled-img div {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 70%;
+	background: linear-gradient(to bottom, transparent, black);
+	border-radius: var(--border-radius);
+}
+
+.labeled-img div h2 {
+	color: white;
+	position: absolute;
+	bottom: 0;
+	left: 32px;
+}
+
+.labeled-img img {
+	width: 100%;
+	border-radius: var(--border-radius);
+}
+
+/* links */
+
+a {
+	background: var(--gradient);
+	background-clip: none;
+	color: var(--background-colour);
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 3px;
+}
+
+a:hover {
+	/* transitions for gradients annoyingly aren't supported in most browsers */
+	background: var(--text-colour);
+}
+
+.link, .link:hover {
+	background: none;
+}
+
+/* buttons */
+
+button {
+	background: var(--gradient);
+	color: var(--background-colour);
+	box-shadow: none;
+	border: none;
+	border-radius: 48px;
+	padding: 8px;
+	padding-left: 32px;
+	padding-right: 32px;
+	margin: 24px;
+
+	font-size: 24px;
+	font-display: optional;
+	font-family: "Montserrat", sans-serif;
+	font-weight: bold;
+
+	cursor: pointer;
+	transition: background .2s, color .2s, opacity .2s, box-shadow .2s, transform .2s;
+}
+
+button:hover {
+	box-shadow: var(--shadow-colour) 0 8px 32px;
+	transform: translateY(-4px);
+}
+
+button:active {
+	transform: none;
+	opacity: 50%;
 }

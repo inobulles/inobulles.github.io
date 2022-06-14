@@ -4,7 +4,7 @@ header {
 	margin-top: 48px; /* accommodate for the navbar */
 
 	max-width: 1200px;
-	min-height: 75vh;
+	min-height: 65vh;
 
 	display: grid;
 	justify-content: center;
@@ -26,21 +26,7 @@ header .title-container p {
 }
 
 header .title-container button {
-	background: var(--gradient);
-	color: var(--background-colour);
-	box-shadow: var(--shadow-colour) 0 8px 32px;
-	border: none;
-	border-radius: 48px;
-	padding: 8px;
-	padding-left: 32px; 
-	padding-right: 32px; 
-	margin: 24px;
-	margin-left: 0;
-
-	font-size: 24px;
-	font-display: optional;
-	font-family: "Montserrat", sans-serif;
-	font-weight: bold;
+	margin-left: 0px;
 }
 
 header .graphic-container {
@@ -58,7 +44,7 @@ header .graphic-container .monitor-content {
 	/* <rect rx = "12" width = "752" height = "452" x = "24" y = "24" fill = "#000" /> */
 
 	position: absolute;
-	
+
 	left: 3%; /* 24 / 800 */
 	top: 4%; /* 24 / 600 */
 

@@ -1,6 +1,25 @@
 .section-alt {
 	padding: 64px;
 	border-radius: 64px 64px 0 0;
-	background: var(--gradient);
-	box-shadow: var(--monitor-bleed) 0 -8px 32px;
+	/* background: -webkit-linear-gradient(50deg, transparent, var(--monitor-bleed)); */
+	/* box-shadow: var(--monitor-bleed) 0 -8px 32px; */
+}
+
+.section-grid {
+	max-width: 1400px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+footer {
+	text-align: center;
+	padding: 64px;
+	border-radius: 64px 64px 0 0;
+	background: -webkit-linear-gradient(50deg, transparent, var(--monitor-bleed));
+}
+
+footer p {
+	margin: auto;
 }

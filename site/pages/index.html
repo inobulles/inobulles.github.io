@@ -20,60 +20,86 @@
 
 		<header>
 			<div class = "title-container">
-				<h1>aquaBSD <b>1.0 Alps</b>.</h1>
-				<p>A general purpose operating system aimed at making everything simply <b>better</b> in every single possible way. For the moment, there isn't much to see, but you can install the beta & watch this <b><a href = "https://youtu.be/t2yQQYLinGg">status update</a></b>.</p>
-				<a href = "https://github.com/inobulles/aquabsd/releases"><button>Install! 🤘</button></a>
+				<h1>aquaBSD <strong>1.0 Alps</strong>.</h1>
+				<p>
+					A general purpose operating system aimed at making everything simply <strong>better</strong> in every single possible way.
+					You can follow my <a href = "https://www.youtube.com/obiwac">YouTube channel</a> for occasional status updates!
+				</p>
+				<a href = "https://github.com/inobulles/aquabsd/releases" class = "link">
+					<button>Try it out! 👉</button>
+				</a>
 			</div>
 
 			<div class = "graphic-container">
 				<!-- it is important to set width & height to the same values as the viewBox for this to work on Chrome -->
 				<!-- no clue why, see https://stackoverflow.com/questions/39056537/why-don-t-svg-images-scale-using-the-css-width-property -->
+
 				<svg width = "800px" height = "600px" class = "monitor-graphic" viewBox = "0 0 800 600" xmlns = "http://www.w3.org/2000/svg">
 					<rect rx = "24" width = "800" height = "500" x = "0"   y = "0"   fill = "#222" />
 					<rect rx = "24" width = "400" height = "48"  x = "200" y = "576" fill = "#222" />
 					<rect           width = "24"  height = "200" x = "388" y = "400" fill = "#222" />
 				</svg>
 				<img class = "monitor-content dark" src = "https://wallpapers.com/images/high/synthwave-wallpaper-tsmfqmoku6efayyx.jpg" />
-				<img class = "monitor-content light" src = "wp.png" />
+				<img class = "monitor-content light" src = "https://wallpapers.com/images/high/synthwave-wallpaper-tsmfqmoku6efayyx.jpg" />
 				<svg class = "monitor-logo" viewBox = "0 0 144 144" xmlns = "http://www.w3.org/2000/svg" fill = "none">
 					<path transform = "rotate(180 72 72)" d = "m22,115l50,-88l50,88l-100,0z" stroke-width = "20" stroke = "#fff"/>
 				</svg>
 			</div>
 		</header>
 
-		<section class = "section-alt">
-			<p>There's not much to see here at the moment, but stay tuned as this site will soon be updated with some more interesting content!</p>
-			<p>Video on aquaBSD: <a href = "https://youtu.be/KB-psq29hU0">https://youtu.be/KB-psq29hU0</a></p>
+		<!-- <center><h1><strong>Big ideas:</strong></h1></center> -->
 
-			<h2>Installation</h2>
+		<section class = "section-alt section-grid">
+			<!-- TODO loads more stuff here (e.g. window management, installer, other cool features/integrations) -->
 
-			<p>Download aquaBSD image as an <a href = "https://github.com/inobulles/aquabsd/releases/download/v1.0-beta-0621a/aquabsd-beta-0621a.img.xz">XZ compressed image file</a> or alternatively as a <a href = "https://github.com/inobulles/aquabsd/releases/download/v1.0-beta-0621a/aquabsd-beta-0621a.zip">ZIP file containing the image</a>.</p>
-			<p>You can run the image in QEMU with:</p>
-			<pre>
-	$ qemu-system-x86_64 -drive file=aquabsd-beta-0621a.img,format=raw
-			</pre>
-
-			<h2>Basic commands</h2>
-
-			<p>Show OS version:</p>
-			<pre>
-	# uname -a
-			</pre>
-
-			<p>Poweroff the machine:</p>
-			<pre>
-	# poweroff
-			</pre>
-
-			<p>List running processes:</p>
-			<pre>
-	# top
-			</pre>
-
-			<p>Edit a text file (note that you can write in '/tmp/' as it's mounted as a memory disk):</p>
-			<pre>
-	# edit
-			</pre>
+			<div class = "info-container">
+				<div class = "labeled-img">
+					<img src = "../core.png" />
+					<div><h2>aquaBSD <a href = "https://github.com/inobulles/aquabsd-core">core</a></h2></div>
+				</div>
+				<p>
+					<b>Full OS forked from <strong>FreeBSD</strong>.</b><br><br>
+					Goal is to keep the the two codebases as similar as possible, but minor differences do exist.<br><br>
+					<a href = "https://github.com/inobulles/aquabsd-core">core</a> is split into two parts: <strong>kernel</strong> (OS kernel in the traditional sense), and <strong>base</strong> (set of user programs necessary to, well, do anything 😄).
+				</p>
+			</div>
+			<div class = "info-container">
+				<div class = "labeled-img">
+					<img src = "../pat.png" />
+					<div><h2><strong>Pat</strong> Shack</h2></div>
+				</div>
+				<p>
+					<b>Centralized application repository & automatic updates.</b><br><br>
+					<strong>ZPK</strong> application package format, which guarantees (inch'Allah) that dependency issues don't cause breakage.<br><br>
+					<strong>aquarium</strong> system for running <strong>Linux-native</strong> programs, as well as providing quick-to-setup virtual environments to work with.
+				</p>
+			</div>
+			<div class = "info-container">
+				<div class = "labeled-img">
+					<img src = "../install.png" />
+					<div><h2><strong>Graphical</strong> installer</h2></div>
+				</div>
+				<p>
+					<b>Easy to use graphical installer.</b><br><br>
+					Small image sizes (<strong>&lt;100 MB</strong>) and quick installation thanks to concurrency and pre-downloading.<br><br>
+					Aim is to reduce time between initial decision to install <strong>aquaBSD</strong> and having something up and running to a minimum.
+				</p>
+			</div>
+			<!-- <div class = "info-container">
+				<div class = "labeled-img">
+					<img src = "../core.png" />
+					<div><h2>GrapeVine</h2></div>
+				</div>
+				<p>
+					<b>Seamless continuity between devices on the network.</b><br><br>
+					As presented during the <a href = "https://youtu.be/KB-psq29hU0">2020 Winter presentation</a>.<br>
+					Allows for communication between <strong>Android</strong>, <strong>Linux</strong>, and <strong>aquaBSD</strong> devices, with features such as secure wireless biometric authentication, camera sharing, common clipboard, and many others.
+				</p>
+			</div> -->
 		</section>
+
+		<footer>
+			<p>©️ 2022 Inobulles</p>
+		</footer>
 	</body>
 </html>
