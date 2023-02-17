@@ -10,7 +10,7 @@
 	--shadow-colour: rgba(183, 0, 255, 0.487);
 	--border-radius: 12px;
 	--blur-radius: 0px;
-	--navbar-colour: #ffff;
+	--navbar-colour: #fffc;
 	--navbar-shadow: rgba(183, 0, 255, 0.1) 0 8px 32px;
 	--code-background: #ddd;
 }
@@ -35,7 +35,7 @@
 		--muted-colour: #999999;
 		--shadow-colour: #ff00cc29;
 		--blur-radius: 96px;
-		--navbar-colour: #000f;
+		--navbar-colour: #000a;
 		--navbar-shadow: rgba(183, 0, 255, 0.05) 0 8px 32px;
 		--code-background: #111;
 	}
