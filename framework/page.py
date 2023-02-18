@@ -37,7 +37,10 @@ class Page:
 		raw = re.sub(r'\s+', ' ', raw) # collapse spaces
 		raw = re.sub(r'#([0-9a-f])\1([0-9a-f])\2([0-9a-f])\3(\s|;)', r'#\1\2\3\4', raw) # collapse colours
 		raw = re.sub(r':\s*0(\.\d+([cm]m|e[mx]|in|p[ctx]))\s*;', r':\1;', raw) # remove extraneous zeros
-		
+
+		css = raw # because there's an issue for special props like @media with nested braces
+
+		"""
 		css = ""
 
 		for rule in re.findall(r'([^{]+){([^}]*)}', raw):
@@ -60,6 +63,7 @@ class Page:
 				props = ''.join([f"{key}:{props[key]};" for key in order])[:-1]
 
 				css += f"{selector}{{{props}}}"
+		"""
 
 		return css
 
