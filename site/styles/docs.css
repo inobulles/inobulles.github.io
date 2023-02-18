@@ -45,10 +45,6 @@
 	height: 100%;
 }
 
-.sidebar-item:hover {
-	background: none;
-}
-
 .sidebar-item div svg {
 	fill: var(--text-colour);
 }

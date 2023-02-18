@@ -46,16 +46,10 @@
 .navbar-item {
 	color: var(--text-colour);
 	background-color: transparent;
-	padding-left: 8px;
-	padding-right: 8px;
+	padding-inline: 8px;
 	width: 100%;
 	height: 100%;
 	border-radius: 8px;
-	transition: background-color 0.05s ease-out;
-}
-
-.navbar-item:hover {
-	background-color: var(--shadow-colour);
 }
 
 @media only screen and (max-width: 800px) {

@@ -216,3 +216,13 @@ button:active {
 	transform: none;
 	opacity: 50%;
 }
+
+.clickable {
+	padding: 2px;
+	transition: background-color 0.05s ease-out;
+	border-radius: var(--border-radius);
+}
+
+.clickable:hover {
+	background-color: var(--shadow-colour);
+}
