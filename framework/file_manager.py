@@ -34,12 +34,13 @@ class File_manager:
 		return self.__read("component", "components", name)
 
 	def __walk(self, path):
-		for dirpath, dirnames, filenames in os.walk(path):
+		for dir_path, _, filenames in os.walk(path):
 			for filename in filenames:
-				src_path = pathlib.Path(dirpath, filename)
+				src_path = pathlib.Path(dir_path, filename)
 
 				if filename.split('.')[-1] != "html":
 					log.warn(f"Found non-HTML file ({src_path})")
+					continue
 
 				yield src_path
 

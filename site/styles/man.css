@@ -1,0 +1,8 @@
+.permalink {
+	color: var(--text-colour);
+	background: none;
+}
+
+.permalink:hover {
+	background: none;
+}

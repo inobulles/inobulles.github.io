@@ -85,6 +85,9 @@ class Page:
 		if description:
 			self.description = description.string
 
+			if not self.description:
+				self.description = "unreadable description"
+
 			if len(self.description) > 275:
 				log.warn(f"{self} description should be no longer than 275 characters (as per Google's 2017 max length on the SERP)")
 
