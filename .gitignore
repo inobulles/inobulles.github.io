@@ -2,12 +2,12 @@ __pycache__/
 
 # manual pages
 
-*.1.html
-*.2.html
-*.3.html
-*.4.html
-*.5.html
-*.6.html
-*.7.html
-*.8.html
-*.9.html
+site/pages/man/*.1.html
+site/pages/man/*.2.html
+site/pages/man/*.3.html
+site/pages/man/*.4.html
+site/pages/man/*.5.html
+site/pages/man/*.6.html
+site/pages/man/*.7.html
+site/pages/man/*.8.html
+site/pages/man/*.9.html

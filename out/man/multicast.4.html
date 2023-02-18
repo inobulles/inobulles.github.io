@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html><head><meta charset=utf-8><title>multicast(4)</title><keywords content=man,multicast></keywords><style>:root { --monitor-bleed: rgba(183, 0, 255, 0.46); --gradient: -webkit-linear-gradient(50deg, rgb(126, 119, 255), rgb(255, 34, 137)); --background-colour: #fff; --title-colour: #000; --text-colour: #000; --article-colour: #fff; --accent-colour: #4385f5; --muted-colour: #555; --shadow-colour: rgba(183, 0, 255, 0.487); --border-radius: 12px; --blur-radius: 0px; --navbar-colour: #fffc; --navbar-shadow: rgba(183, 0, 255, 0.1) 0 8px 32px; --code-background: #ddd; } .dark { visibility: hidden; } @media (prefers-color-scheme: light) { } @media (prefers-color-scheme: dark) { :root { --monitor-bleed: rgba(183, 0, 255, 0.172); --gradient: -webkit-linear-gradient(50deg, rgb(255, 79, 79), rgb(255, 52, 221)); --background-colour: #000; --title-colour: #fff; --text-colour: #ddd; --article-colour: #00000033; --accent-colour: #98beff; --muted-colour: #999; --shadow-colour: #ff00cc29; --blur-radius: 96px; --navbar-colour: #000a; --navbar-shadow: rgba(183, 0, 255, 0.05) 0 8px 32px; --code-background: #111; } .dark { visibility: visible; } .light { visibility: hidden; } } html, body { overflow-x: hidden; } body { background-image: url(bg.svg); background-size: cover; margin: 0; background-color: var(--background-colour); color: var(--text-colour); font-size: 22px; font-display: optional; font-family: "Montserrat", sans-serif; overflow-y: hidden; } h1 { color: var(--title-colour); font-size: 70px; font-display: optional; font-family: "Montserrat", sans-serif; } h2 { color: var(--title-colour); font-size: 40px; font-display: optional; font-family: "Montserrat", sans-serif; } h3 { color: var(--title-colour); font-size: 24px; font-display: optional; font-family: "Roboto Slab", serif; } q, blockquote { font-style: italic; white-space: pre-wrap; padding-left: 42px; } pre { margin: 32px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; } strong { background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; } code { border-radius: 8px; background-color: var(--code-background); } pre { white-space: pre-wrap; } .info-container { max-width: 400px; margin: 32px; } .info-container p { margin-inline: 16px; margin-block: 32px; text-align: justify; font-size: 18px; } .labeled-img { max-width: 100%; position: relative; } .labeled-img div { position: absolute; bottom: 0; width: 100%; height: 70%; background: linear-gradient(to bottom, transparent, black); border-radius: var(--border-radius); } .labeled-img div h2 { color: white; position: absolute; bottom: 0; left: 32px; } .labeled-img img { width: 100%; border-radius: var(--border-radius); } a { background: var(--gradient); background-clip: none; color: var(--background-colour); font-weight: bold; text-decoration: none; border-radius: 3px; } a:hover { background: var(--text-colour); } .link, .link:hover { background: none; } button { background: var(--gradient); color: var(--background-colour); box-shadow: none; border: none; border-radius: 48px; padding: 8px; padding-left: 32px; padding-right: 32px; margin: 24px; font-size: 24px; font-display: optional; font-family: "Montserrat", sans-serif; font-weight: bold; cursor: pointer; transition: background .2s, color .2s, opacity .2s, box-shadow .2s, transform .2s; } button:hover { box-shadow: var(--shadow-colour) 0 8px 32px; transform: translateY(-4px); } button:active { transform: none; opacity: 50%; } .clickable { padding: 2px; transition: background-color 0.05s ease-out; border-radius: var(--border-radius); } .clickable:hover { background-color: var(--shadow-colour); } .docs-container { margin: auto; margin-top: 64px; max-width: 1200px; display: grid; justify-content: center; grid-template-columns: 1fr 3fr; } .docs { max-width: 900px; } .sidebar { min-width: 250px; position: fixed; padding: 16px; display: grid; justify-content: center; grid-auto-flow: row; grid-gap: 32px; padding-top: 64px; } .sidebar * { margin: auto; display: grid; justify-content: left; grid-auto-flow: column; grid-gap: 8px; } .sidebar p { font-size: 18px; } .sidebar-item { color: var(--text-colour); background: none; padding-inline: 8px; width: 100%; height: 100%; } .sidebar-item div svg { fill: var(--text-colour); } .navbar-container { width: 100vw; height: 48px; } .navbar { position: fixed; z-index: 100; width: 100vw; background-color: var(--navbar-colour); backdrop-filter: blur(20px); display: grid; justify-content: center; grid-auto-flow: column; grid-gap: 32px; padding: 12px; } .navbar * { margin: auto; display: grid; justify-content: center; grid-auto-flow: column; grid-gap: 8px; } .navbar p { font-size: 18px; } .navbar-logo { height: 100%; max-height: 32px; stroke: var(--text-colour); } .navbar-icon { fill: var(--text-colour); } .navbar-item { color: var(--text-colour); background-color: transparent; padding-inline: 8px; width: 100%; height: 100%; border-radius: 8px; } @media only screen and (max-width: 800px) { .navbar-item { position: absolute; visibility: hidden; } } footer { text-align: center; padding: 64px; border-radius: 64px 64px 0 0; background: -webkit-linear-gradient(50deg, transparent, var(--monitor-bleed)); } footer p { margin: auto; } .permalink { color: var(--text-colour); background: none; } .permalink:hover { background: none; } </style></head><body><html><body><div class=navbar-container><div class=navbar><a class="navbar-item clickable link" href=https://inobulles.github.io><div><svg class=navbar-logo fill=none height=24px viewbox="0 0 144 144" width=24px xmlns=http://www.w3.org/2000/svg><path d=m22,115l50,-88l50,88l-100,0z stroke-width=20 transform="rotate(180 72 72)"></path></svg><p><strong>aquaBSD</strong></p></div></a><a class="navbar-item clickable link" href=https://inobulles.github.io/docs><div><svg class=navbar-icon fill=none height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg><p>Develop</p></div></a><a class="navbar-item clickable link" href=mailto:inobulles@gmail.com><div><svg class=navbar-icon fill=none height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z"></path></svg><p>Contact</p></div></a><a class="navbar-item clickable link" href=#><div><svg class=navbar-icon enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M19.46,9.12l-2.78,1.15 c-0.51-1.36-1.58-2.44-2.95-2.94l1.15-2.78C16.98,5.35,18.65,7.02,19.46,9.12z M12,15c-1.66,0-3-1.34-3-3s1.34-3,3-3s3,1.34,3,3 S13.66,15,12,15z M9.13,4.54l1.17,2.78c-1.38,0.5-2.47,1.59-2.98,2.97L4.54,9.13C5.35,7.02,7.02,5.35,9.13,4.54z M4.54,14.87 l2.78-1.15c0.51,1.38,1.59,2.46,2.97,2.96l-1.17,2.78C7.02,18.65,5.35,16.98,4.54,14.87z M14.88,19.46l-1.15-2.78 c1.37-0.51,2.45-1.59,2.95-2.97l2.78,1.17C18.65,16.98,16.98,18.65,14.88,19.46z"></path></g></svg><p>Support</p></div></a><a class="navbar-item clickable link" href=#><div><svg class=navbar-icon fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 12 7.4l3.38 4.6L17 10.83 14.92 8H20v6z"></path></svg><p>Log in</p></div></a></div></div></body></html><div class=docs-container><html><body><div class=sidebar-container><div class=sidebar><a class="sidebar-item clickable" href=https://inobulles.github.io/docs><div><svg fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M12.36 6l.4 2H18v6h-3.36l-.4-2H7V6h5.36M14 4H5v17h2v-7h5.6l.4 2h7V6h-5.6L14 4z"></path></svg><p>Introduction</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/struct><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><rect fill=none height=24 width=24></rect><path d="M22,11V3h-7v3H9V3H2v8h7V8h2v10h4v3h7v-8h-7v3h-2V8h2v3H22z M7,9H4V5h3V9z M17,15h3v4h-3V15z M17,5h3v4h-3V5z"></path></svg><p>OS Components</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/dev-tools><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><g><rect height=8.48 transform="matrix(0.7071 -0.7071 0.7071 0.7071 -6.8717 17.6255)" width=3 x=16.34 y=12.87></rect><path d="M17.5,10c1.93,0,3.5-1.57,3.5-3.5c0-0.58-0.16-1.12-0.41-1.6l-2.7,2.7L16.4,6.11l2.7-2.7C18.62,3.16,18.08,3,17.5,3 C15.57,3,14,4.57,14,6.5c0,0.41,0.08,0.8,0.21,1.16l-1.85,1.85l-1.78-1.78l0.71-0.71L9.88,5.61L12,3.49 c-1.17-1.17-3.07-1.17-4.24,0L4.22,7.03l1.41,1.41H2.81L2.1,9.15l3.54,3.54l0.71-0.71V9.15l1.41,1.41l0.71-0.71l1.78,1.78 l-7.41,7.41l2.12,2.12L16.34,9.79C16.7,9.92,17.09,10,17.5,10z"></path></g></g></svg><p>Developer Tools</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/create-app><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24 x=0></rect></g><g><g><polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25"></polygon><polygon points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75"></polygon><path d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z"></path></g></g></svg><p>Creating an App</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/packaging><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><g><path d="M20,2H4C3,2,2,2.9,2,4v3.01C2,7.73,2.43,8.35,3,8.7V20c0,1.1,1.1,2,2,2h14c0.9,0,2-0.9,2-2V8.7c0.57-0.35,1-0.97,1-1.69V4 C22,2.9,21,2,20,2z M19,20H5V9h14V20z M20,7H4V4h16V7z"></path><rect height=2 width=6 x=9 y=12></rect></g></g></svg><p>Packaging Apps</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/publishing><div><svg fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M13 3v1h-2V3h2m-1 7.11l5.38 1.77 2.39.78-1.12 3.97c-.54-.3-.94-.71-1.14-.94L16 13.96l-1.51 1.72c-.34.4-1.28 1.32-2.49 1.32s-2.15-.92-2.49-1.32L8 13.96l-1.51 1.72c-.2.23-.6.63-1.14.93l-1.13-3.96 2.4-.79L12 10.11M15 1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1zM6 9.97V6h12v3.97L12 8 6 9.97zm10 9.71c-1.22.85-2.61 1.28-4 1.28s-2.78-.43-4-1.28C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 1.26.64 2.63.97 4 .97s2.74-.32 4-.97c1.26.65 2.62.99 4 .99h2v-2h-2c-1.39 0-2.78-.47-4-1.32z"></path></svg><p>Publishing Apps</p></div></a></div></div></body></html><div class=docs><h1>multicast(4)</h1><table class=head><tr><td class=head-ltitle>MULTICAST(4)</td><td class=head-vol>FreeBSD Kernel Interfaces Manual</td><td class=head-rtitle>MULTICAST(4)</td></tr></table><div class=manual-text><section class=Sh><h2 class=Sh id=NAME><a class=permalink href=#NAME>NAME</a></h2><code class=Nm>multicast</code> — <div class=Nd>Multicast Routing</div></section><section class=Sh><h2 class=Sh id=SYNOPSIS><a class=permalink href=#SYNOPSIS>SYNOPSIS</a></h2><code class=Cd>options MROUTING</code><p class=Pp><br><code class=In>#include &lt;<a class=In href=../src/sys/types.h.html>sys/types.h</a>&gt;</code><br><code class=In>#include &lt;<a class=In href=../src/sys/socket.h.html>sys/socket.h</a>&gt;</code><br><code class=In>#include &lt;<a class=In href=../src/netinet/in.h.html>netinet/in.h</a>&gt;</code><br><code class=In>#include &lt;<a class=In href=../src/netinet/ip_mroute.h.html>netinet/ip_mroute.h</a>&gt;</code><br><code class=In>#include &lt;<a class=In href=../src/netinet6/ip6_mroute.h.html>netinet6/ip6_mroute.h</a>&gt;</code></p><p class=Pp><var class=Ft>int</var><br><code class=Fn>getsockopt</code>(<var class=Fa style="white-space: nowrap;">int s</var>, <var class=Fa style="white-space: nowrap;">IPPROTO_IP</var>, <var class=Fa style="white-space: nowrap;">MRT_INIT</var>, <var class=Fa style="white-space: nowrap;">void *optval</var>, <var class=Fa style="white-space: nowrap;">socklen_t *optlen</var>);</p><p class=Pp><var class=Ft>int</var><br><code class=Fn>setsockopt</code>(<var class=Fa style="white-space: nowrap;">int s</var>, <var class=Fa style="white-space: nowrap;">IPPROTO_IP</var>, <var class=Fa style="white-space: nowrap;">MRT_INIT</var>, <var class=Fa style="white-space: nowrap;">const void *optval</var>, <var class=Fa style="white-space: nowrap;">socklen_t optlen</var>);</p><p class=Pp><var class=Ft>int</var><br><code class=Fn>getsockopt</code>(<var class=Fa style="white-space: nowrap;">int s</var>, <var class=Fa style="white-space: nowrap;">IPPROTO_IPV6</var>, <var class=Fa style="white-space: nowrap;">MRT6_INIT</var>, <var class=Fa style="white-space: nowrap;">void *optval</var>, <var class=Fa style="white-space: nowrap;">socklen_t *optlen</var>);</p><p class=Pp><var class=Ft>int</var><br><code class=Fn>setsockopt</code>(<var class=Fa style="white-space: nowrap;">int s</var>, <var class=Fa style="white-space: nowrap;">IPPROTO_IPV6</var>, <var class=Fa style="white-space: nowrap;">MRT6_INIT</var>, <var class=Fa style="white-space: nowrap;">const void *optval</var>, <var class=Fa style="white-space: nowrap;">socklen_t optlen</var>);</p></section><section class=Sh><h2 class=Sh id=DESCRIPTION><a class=permalink href=#DESCRIPTION>DESCRIPTION</a></h2> Multicast routing is used to efficiently propagate data packets to a set of multicast listeners in multipoint networks. If unicast is used to replicate the data to all listeners, then some of the network links may carry multiple copies of the same data packets. With multicast routing, the overhead is reduced to one copy (at most) per network link. <p class=Pp>All multicast-capable routers must run a common multicast routing protocol. It is recommended that either Protocol Independent Multicast - Sparse Mode (PIM-SM), or Protocol Independent Multicast - Dense Mode (PIM-DM) are used, as these are now the generally accepted protocols in the Internet community. The <a class=Sx href=#HISTORY>HISTORY</a> section discusses previous multicast routing protocols.</p><p class=Pp>To start multicast routing, the user must enable multicast forwarding in the kernel (see <a class=Sx href=#SYNOPSIS>SYNOPSIS</a> about the kernel configuration options), and must run a multicast routing capable user-level process. From developer's point of view, the programming guide described in the <a class=Sx href=#Programming_Guide>Programming Guide</a> section should be used to control the multicast forwarding in the kernel.</p><section class=Ss><h2 class=Ss id=Programming_Guide><a class=permalink href=#Programming_Guide>Programming Guide</a></h2> This section provides information about the basic multicast routing API. The so-called “advanced multicast API” is described in the <a class=Sx href=#Advanced_Multicast_API_Programming_Guide>Advanced Multicast API Programming Guide</a> section. <p class=Pp>First, a multicast routing socket must be open. That socket would be used to control the multicast forwarding in the kernel. Note that most operations below require certain privilege (i.e., root privilege):</p><div class="Bd Pp"><pre>
+/* IPv4 */
+int mrouter_s4;
+mrouter_s4 = socket(AF_INET, SOCK_RAW, IPPROTO_IGMP);
+</pre></div><div class="Bd Pp"><pre>
+int mrouter_s6;
+mrouter_s6 = socket(AF_INET6, SOCK_RAW, IPPROTO_ICMPV6);
+</pre></div><p class=Pp>Note that if the router needs to open an IGMP or ICMPv6 socket (in case of IPv4 and IPv6 respectively) for sending or receiving of IGMP or MLD multicast group membership messages, then the same <var class=Va>mrouter_s4</var> or <var class=Va>mrouter_s6</var> sockets should be used for sending and receiving respectively IGMP or MLD messages. In case of <span class=Ux>BSD</span>-derived kernel, it may be possible to open separate sockets for IGMP or MLD messages only. However, some other kernels (e.g., Linux) require that the multicast routing socket must be used for sending and receiving of IGMP or MLD messages. Therefore, for portability reason the multicast routing socket should be reused for IGMP and MLD messages as well.</p><p class=Pp>After the multicast routing socket is open, it can be used to enable or disable multicast forwarding in the kernel:</p><div class="Bd Pp"><pre>
+/* IPv4 */
+int v = 1;        /* 1 to enable, or 0 to disable */
+setsockopt(mrouter_s4, IPPROTO_IP, MRT_INIT, (void *)&amp;v, sizeof(v));
+</pre></div><div class="Bd Pp"><pre>
+/* IPv6 */
+int v = 1;        /* 1 to enable, or 0 to disable */
+setsockopt(mrouter_s6, IPPROTO_IPV6, MRT6_INIT, (void *)&amp;v, sizeof(v));
+...
+/* If necessary, filter all ICMPv6 messages */
+struct icmp6_filter filter;
+ICMP6_FILTER_SETBLOCKALL(&amp;filter);
+setsockopt(mrouter_s6, IPPROTO_ICMPV6, ICMP6_FILTER, (void *)&amp;filter,
+           sizeof(filter));
+</pre></div><p class=Pp>After multicast forwarding is enabled, the multicast routing socket can be used to enable PIM processing in the kernel if we are running PIM-SM or PIM-DM (see <a class=Xr href=pim.4.html>pim(4)</a>).</p><p class=Pp>For each network interface (e.g., physical or a virtual tunnel) that would be used for multicast forwarding, a corresponding multicast interface must be added to the kernel:</p><div class="Bd Pp"><pre>
+/* IPv4 */
+struct vifctl vc;
+memset(&amp;vc, 0, sizeof(vc));
+/* Assign all vifctl fields as appropriate */
+vc.vifc_vifi = vif_index;
+vc.vifc_flags = vif_flags;
+vc.vifc_threshold = min_ttl_threshold;
+vc.vifc_rate_limit = 0;
+memcpy(&amp;vc.vifc_lcl_addr, &amp;vif_local_address, sizeof(vc.vifc_lcl_addr));
+setsockopt(mrouter_s4, IPPROTO_IP, MRT_ADD_VIF, (void *)&amp;vc,
+           sizeof(vc));
+</pre></div><p class=Pp>The <var class=Va>vif_index</var> must be unique per vif. The <var class=Va>vif_flags</var> contains the <code class=Dv>VIFF_*</code> flags as defined in <code class=In>&lt;<a class=In href=../src/netinet/ip_mroute.h.html>netinet/ip_mroute.h</a>&gt;</code>. The <code class=Dv>VIFF_TUNNEL</code> flag is no longer supported by <span class=Ux>FreeBSD</span>. Users who wish to forward multicast datagrams over a tunnel should consider configuring a <a class=Xr href=gif.4.html>gif(4)</a> or <a class=Xr href=gre.4.html>gre(4)</a> tunnel and using it as a physical interface.</p><p class=Pp>The <var class=Va>min_ttl_threshold</var> contains the minimum TTL a multicast data packet must have to be forwarded on that vif. Typically, it would have value of 1.</p><p class=Pp>The <var class=Va>max_rate_limit</var> argument is no longer supported in <span class=Ux>FreeBSD</span> and should be set to 0. Users who wish to rate-limit multicast datagrams should consider the use of <a class=Xr href=dummynet.4.html>dummynet(4)</a> or <a class=Xr href=altq.4.html>altq(4)</a>.</p><p class=Pp>The <var class=Va>vif_local_address</var> contains the local IP address of the corresponding local interface. The <var class=Va>vif_remote_address</var> contains the remote IP address in case of DVMRP multicast tunnels.</p><div class="Bd Pp"><pre>
+/* IPv6 */
+struct mif6ctl mc;
+memset(&amp;mc, 0, sizeof(mc));
+/* Assign all mif6ctl fields as appropriate */
+mc.mif6c_mifi = mif_index;
+mc.mif6c_flags = mif_flags;
+mc.mif6c_pifi = pif_index;
+setsockopt(mrouter_s6, IPPROTO_IPV6, MRT6_ADD_MIF, (void *)&amp;mc,
+           sizeof(mc));
+</pre></div><p class=Pp>The <var class=Va>mif_index</var> must be unique per vif. The <var class=Va>mif_flags</var> contains the <code class=Dv>MIFF_*</code> flags as defined in <code class=In>&lt;<a class=In href=../src/netinet6/ip6_mroute.h.html>netinet6/ip6_mroute.h</a>&gt;</code>. The <var class=Va>pif_index</var> is the physical interface index of the corresponding local interface.</p><p class=Pp>A multicast interface is deleted by:</p><div class="Bd Pp"><pre>
+/* IPv4 */
+vifi_t vifi = vif_index;
+setsockopt(mrouter_s4, IPPROTO_IP, MRT_DEL_VIF, (void *)&amp;vifi,
+           sizeof(vifi));
+</pre></div><div class="Bd Pp"><pre>
+/* IPv6 */
+mifi_t mifi = mif_index;
+setsockopt(mrouter_s6, IPPROTO_IPV6, MRT6_DEL_MIF, (void *)&amp;mifi,
+           sizeof(mifi));
+</pre></div><p class=Pp>After the multicast forwarding is enabled, and the multicast virtual interfaces are added, the kernel may deliver upcall messages (also called signals later in this text) on the multicast routing socket that was open earlier with <code class=Dv>MRT_INIT</code> or <code class=Dv>MRT6_INIT</code>. The IPv4 upcalls have <var class=Vt>struct igmpmsg</var> header (see <code class=In>&lt;<a class=In href=../src/netinet/ip_mroute.h.html>netinet/ip_mroute.h</a>&gt;</code>) with field <var class=Va>im_mbz</var> set to zero. Note that this header follows the structure of <var class=Vt>struct ip</var> with the protocol field <var class=Va>ip_p</var> set to zero. The IPv6 upcalls have <var class=Vt>struct mrt6msg</var> header (see <code class=In>&lt;<a class=In href=../src/netinet6/ip6_mroute.h.html>netinet6/ip6_mroute.h</a>&gt;</code>) with field <var class=Va>im6_mbz</var> set to zero. Note that this header follows the structure of <var class=Vt>struct ip6_hdr</var> with the next header field <var class=Va>ip6_nxt</var> set to zero.</p><p class=Pp>The upcall header contains field <var class=Va>im_msgtype</var> and <var class=Va>im6_msgtype</var> with the type of the upcall <code class=Dv>IGMPMSG_*</code> and <code class=Dv>MRT6MSG_*</code> for IPv4 and IPv6 respectively. The values of the rest of the upcall header fields and the body of the upcall message depend on the particular upcall type.</p><p class=Pp>If the upcall message type is <code class=Dv>IGMPMSG_NOCACHE</code> or <code class=Dv>MRT6MSG_NOCACHE</code>, this is an indication that a multicast packet has reached the multicast router, but the router has no forwarding state for that packet. Typically, the upcall would be a signal for the multicast routing user-level process to install the appropriate Multicast Forwarding Cache (MFC) entry in the kernel.</p><p class=Pp>An MFC entry is added by:</p><div class="Bd Pp"><pre>
+/* IPv4 */
+struct mfcctl mc;
+memset(&amp;mc, 0, sizeof(mc));
+memcpy(&amp;mc.mfcc_origin, &amp;source_addr, sizeof(mc.mfcc_origin));
+memcpy(&amp;mc.mfcc_mcastgrp, &amp;group_addr, sizeof(mc.mfcc_mcastgrp));
+mc.mfcc_parent = iif_index;
+for (i = 0; i &lt; maxvifs; i++)
+    mc.mfcc_ttls[i] = oifs_ttl[i];
+setsockopt(mrouter_s4, IPPROTO_IP, MRT_ADD_MFC,
+           (void *)&amp;mc, sizeof(mc));
+</pre></div><div class="Bd Pp"><pre>
+/* IPv6 */
+struct mf6cctl mc;
+memset(&amp;mc, 0, sizeof(mc));
+memcpy(&amp;mc.mf6cc_origin, &amp;source_addr, sizeof(mc.mf6cc_origin));
+memcpy(&amp;mc.mf6cc_mcastgrp, &amp;group_addr, sizeof(mf6cc_mcastgrp));
+mc.mf6cc_parent = iif_index;
+for (i = 0; i &lt; maxvifs; i++)
+    if (oifs_ttl[i] &gt; 0)
+        IF_SET(i, &amp;mc.mf6cc_ifset);
+setsockopt(mrouter_s6, IPPROTO_IPV6, MRT6_ADD_MFC,
+           (void *)&amp;mc, sizeof(mc));
+</pre></div><p class=Pp>The <var class=Va>source_addr</var> and <var class=Va>group_addr</var> are the source and group address of the multicast packet (as set in the upcall message). The <var class=Va>iif_index</var> is the virtual interface index of the multicast interface the multicast packets for this specific source and group address should be received on. The <var class=Va>oifs_ttl[]</var> array contains the minimum TTL (per interface) a multicast packet should have to be forwarded on an outgoing interface. If the TTL value is zero, the corresponding interface is not included in the set of outgoing interfaces. Note that in case of IPv6 only the set of outgoing interfaces can be specified.</p><p class=Pp>An MFC entry is deleted by:</p><div class="Bd Pp"><pre>
+/* IPv4 */
+struct mfcctl mc;
+memset(&amp;mc, 0, sizeof(mc));
+memcpy(&amp;mc.mfcc_origin, &amp;source_addr, sizeof(mc.mfcc_origin));
+memcpy(&amp;mc.mfcc_mcastgrp, &amp;group_addr, sizeof(mc.mfcc_mcastgrp));
+setsockopt(mrouter_s4, IPPROTO_IP, MRT_DEL_MFC,
+           (void *)&amp;mc, sizeof(mc));
+</pre></div><div class="Bd Pp"><pre>
+/* IPv6 */
+struct mf6cctl mc;
+memset(&amp;mc, 0, sizeof(mc));
+memcpy(&amp;mc.mf6cc_origin, &amp;source_addr, sizeof(mc.mf6cc_origin));
+memcpy(&amp;mc.mf6cc_mcastgrp, &amp;group_addr, sizeof(mf6cc_mcastgrp));
+setsockopt(mrouter_s6, IPPROTO_IPV6, MRT6_DEL_MFC,
+           (void *)&amp;mc, sizeof(mc));
+</pre></div><p class=Pp>The following method can be used to get various statistics per installed MFC entry in the kernel (e.g., the number of forwarded packets per source and group address):</p><div class="Bd Pp"><pre>
+/* IPv4 */
+struct sioc_sg_req sgreq;
+memset(&amp;sgreq, 0, sizeof(sgreq));
+memcpy(&amp;sgreq.src, &amp;source_addr, sizeof(sgreq.src));
+memcpy(&amp;sgreq.grp, &amp;group_addr, sizeof(sgreq.grp));
+ioctl(mrouter_s4, SIOCGETSGCNT, &amp;sgreq);
+</pre></div><div class="Bd Pp"><pre>
+/* IPv6 */
+struct sioc_sg_req6 sgreq;
+memset(&amp;sgreq, 0, sizeof(sgreq));
+memcpy(&amp;sgreq.src, &amp;source_addr, sizeof(sgreq.src));
+memcpy(&amp;sgreq.grp, &amp;group_addr, sizeof(sgreq.grp));
+ioctl(mrouter_s6, SIOCGETSGCNT_IN6, &amp;sgreq);
+</pre></div><p class=Pp>The following method can be used to get various statistics per multicast virtual interface in the kernel (e.g., the number of forwarded packets per interface):</p><div class="Bd Pp"><pre>
+/* IPv4 */
+struct sioc_vif_req vreq;
+memset(&amp;vreq, 0, sizeof(vreq));
+vreq.vifi = vif_index;
+ioctl(mrouter_s4, SIOCGETVIFCNT, &amp;vreq);
+</pre></div><div class="Bd Pp"><pre>
+/* IPv6 */
+struct sioc_mif_req6 mreq;
+memset(&amp;mreq, 0, sizeof(mreq));
+mreq.mifi = vif_index;
+ioctl(mrouter_s6, SIOCGETMIFCNT_IN6, &amp;mreq);
+</pre></div></section><section class=Ss><h2 class=Ss id=Advanced_Multicast_API_Programming_Guide><a class=permalink href=#Advanced_Multicast_API_Programming_Guide>Advanced Multicast API Programming Guide</a></h2> If we want to add new features in the kernel, it becomes difficult to preserve backward compatibility (binary and API), and at the same time to allow user-level processes to take advantage of the new features (if the kernel supports them). <p class=Pp>One of the mechanisms that allows us to preserve the backward compatibility is a sort of negotiation between the user-level process and the kernel:</p><ol class=Bl-enum><li>The user-level process tries to enable in the kernel the set of new features (and the corresponding API) it would like to use.</li><li>The kernel returns the (sub)set of features it knows about and is willing to be enabled.</li><li>The user-level process uses only that set of features the kernel has agreed on.</li></ol><p class=Pp>To support backward compatibility, if the user-level process does not ask for any new features, the kernel defaults to the basic multicast API (see the <a class=Sx href=#Programming_Guide>Programming Guide</a> section). Currently, the advanced multicast API exists only for IPv4; in the future there will be IPv6 support as well.</p><p class=Pp>Below is a summary of the expandable API solution. Note that all new options and structures are defined in <code class=In>&lt;<a class=In href=../src/netinet/ip_mroute.h.html>netinet/ip_mroute.h</a>&gt;</code> and <code class=In>&lt;<a class=In href=../src/netinet6/ip6_mroute.h.html>netinet6/ip6_mroute.h</a>&gt;</code>, unless stated otherwise.</p><p class=Pp>The user-level process uses new <code class=Fn>getsockopt</code>()/<code class=Fn>setsockopt</code>() options to perform the API features negotiation with the kernel. This negotiation must be performed right after the multicast routing socket is open. The set of desired/allowed features is stored in a bitset (currently, in <var class=Vt>uint32_t</var>; i.e., maximum of 32 new features). The new <code class=Fn>getsockopt</code>()/<code class=Fn>setsockopt</code>() options are <code class=Dv>MRT_API_SUPPORT</code> and <code class=Dv>MRT_API_CONFIG</code>. Example:</p><div class="Bd Pp"><pre>
+uint32_t v;
+getsockopt(sock, IPPROTO_IP, MRT_API_SUPPORT, (void *)&amp;v, sizeof(v));
+</pre></div><p class=Pp>would set in <var class=Va>v</var> the pre-defined bits that the kernel API supports. The eight least significant bits in <var class=Vt>uint32_t</var> are same as the eight possible flags <code class=Dv>MRT_MFC_FLAGS_*</code> that can be used in <var class=Va>mfcc_flags</var> as part of the new definition of <var class=Vt>struct mfcctl</var> (see below about those flags), which leaves 24 flags for other new features. The value returned by <code class=Fn>getsockopt</code>(<var class=Fa>MRT_API_SUPPORT</var>) is read-only; in other words, <code class=Fn>setsockopt</code>(<var class=Fa>MRT_API_SUPPORT</var>) would fail.</p><p class=Pp>To modify the API, and to set some specific feature in the kernel, then:</p><div class="Bd Pp"><pre>
+uint32_t v = MRT_MFC_FLAGS_DISABLE_WRONGVIF;
+if (setsockopt(sock, IPPROTO_IP, MRT_API_CONFIG, (void *)&amp;v, sizeof(v))
+    != 0) {
+    return (ERROR);
+}
+if (v &amp; MRT_MFC_FLAGS_DISABLE_WRONGVIF)
+    return (OK);	/* Success */
+else
+    return (ERROR);
+</pre></div><p class=Pp>In other words, when <code class=Fn>setsockopt</code>(<var class=Fa>MRT_API_CONFIG</var>) is called, the argument to it specifies the desired set of features to be enabled in the API and the kernel. The return value in <var class=Va>v</var> is the actual (sub)set of features that were enabled in the kernel. To obtain later the same set of features that were enabled, then:</p><div class="Bd Pp"><pre>
+getsockopt(sock, IPPROTO_IP, MRT_API_CONFIG, (void *)&amp;v, sizeof(v));
+</pre></div><p class=Pp>The set of enabled features is global. In other words, <code class=Fn>setsockopt</code>(<var class=Fa>MRT_API_CONFIG</var>) should be called right after <code class=Fn>setsockopt</code>(<var class=Fa>MRT_INIT</var>).</p><p class=Pp>Currently, the following set of new features is defined:</p><div class="Bd Pp"><pre>
+#define	MRT_MFC_FLAGS_DISABLE_WRONGVIF (1 &lt;&lt; 0) /* disable WRONGVIF signals */
+#define	MRT_MFC_FLAGS_BORDER_VIF   (1 &lt;&lt; 1)  /* border vif              */
+#define MRT_MFC_RP                 (1 &lt;&lt; 8)  /* enable RP address	*/
+#define MRT_MFC_BW_UPCALL          (1 &lt;&lt; 9)  /* enable bw upcalls	*/
+</pre></div><p class=Pp>The advanced multicast API uses a newly defined <var class=Vt>struct mfcctl2</var> instead of the traditional <var class=Vt>struct mfcctl</var>. The original <var class=Vt>struct mfcctl</var> is kept as is. The new <var class=Vt>struct mfcctl2</var> is:</p><div class="Bd Pp"><pre>
+/*
+ * The new argument structure for MRT_ADD_MFC and MRT_DEL_MFC overlays
+ * and extends the old struct mfcctl.
+ */
+struct mfcctl2 {
+        /* the mfcctl fields */
+        struct in_addr  mfcc_origin;       /* ip origin of mcasts       */
+        struct in_addr  mfcc_mcastgrp;     /* multicast group associated*/
+        vifi_t          mfcc_parent;       /* incoming vif              */
+        u_char          mfcc_ttls[MAXVIFS];/* forwarding ttls on vifs   */
+
+        /* extension fields */
+        uint8_t         mfcc_flags[MAXVIFS];/* the MRT_MFC_FLAGS_* flags*/
+        struct in_addr  mfcc_rp;            /* the RP address           */
+};
+</pre></div><p class=Pp>The new fields are <var class=Va>mfcc_flags[MAXVIFS]</var> and <var class=Va>mfcc_rp</var>. Note that for compatibility reasons they are added at the end.</p><p class=Pp>The <var class=Va>mfcc_flags[MAXVIFS]</var> field is used to set various flags per interface per (S,G) entry. Currently, the defined flags are:</p><div class="Bd Pp"><pre>
+#define	MRT_MFC_FLAGS_DISABLE_WRONGVIF (1 &lt;&lt; 0) /* disable WRONGVIF signals */
+#define	MRT_MFC_FLAGS_BORDER_VIF       (1 &lt;&lt; 1) /* border vif          */
+</pre></div><p class=Pp>The <code class=Dv>MRT_MFC_FLAGS_DISABLE_WRONGVIF</code> flag is used to explicitly disable the <code class=Dv>IGMPMSG_WRONGVIF</code> kernel signal at the (S,G) granularity if a multicast data packet arrives on the wrong interface. Usually, this signal is used to complete the shortest-path switch in case of PIM-SM multicast routing, or to trigger a PIM assert message. However, it should not be delivered for interfaces that are not in the outgoing interface set, and that are not expecting to become an incoming interface. Hence, if the <code class=Dv>MRT_MFC_FLAGS_DISABLE_WRONGVIF</code> flag is set for some of the interfaces, then a data packet that arrives on that interface for that MFC entry will NOT trigger a WRONGVIF signal. If that flag is not set, then a signal is triggered (the default action).</p><p class=Pp>The <code class=Dv>MRT_MFC_FLAGS_BORDER_VIF</code> flag is used to specify whether the Border-bit in PIM Register messages should be set (in case when the Register encapsulation is performed inside the kernel). If it is set for the special PIM Register kernel virtual interface (see <a class=Xr href=pim.4.html>pim(4)</a>), the Border-bit in the Register messages sent to the RP will be set.</p><p class=Pp>The remaining six bits are reserved for future usage.</p><p class=Pp>The <var class=Va>mfcc_rp</var> field is used to specify the RP address (in case of PIM-SM multicast routing) for a multicast group G if we want to perform kernel-level PIM Register encapsulation. The <var class=Va>mfcc_rp</var> field is used only if the <code class=Dv>MRT_MFC_RP</code> advanced API flag/capability has been successfully set by <code class=Fn>setsockopt</code>(<var class=Fa>MRT_API_CONFIG</var>).</p><p class=Pp>If the <code class=Dv>MRT_MFC_RP</code> flag was successfully set by <code class=Fn>setsockopt</code>(<var class=Fa>MRT_API_CONFIG</var>), then the kernel will attempt to perform the PIM Register encapsulation itself instead of sending the multicast data packets to user level (inside <code class=Dv>IGMPMSG_WHOLEPKT</code> upcalls) for user-level encapsulation. The RP address would be taken from the <var class=Va>mfcc_rp</var> field inside the new <var class=Vt>struct mfcctl2</var>. However, even if the <code class=Dv>MRT_MFC_RP</code> flag was successfully set, if the <var class=Va>mfcc_rp</var> field was set to <code class=Dv>INADDR_ANY</code>, then the kernel will still deliver an <code class=Dv>IGMPMSG_WHOLEPKT</code> upcall with the multicast data packet to the user-level process.</p><p class=Pp>In addition, if the multicast data packet is too large to fit within a single IP packet after the PIM Register encapsulation (e.g., if its size was on the order of 65500 bytes), the data packet will be fragmented, and then each of the fragments will be encapsulated separately. Note that typically a multicast data packet can be that large only if it was originated locally from the same hosts that performs the encapsulation; otherwise the transmission of the multicast data packet over Ethernet for example would have fragmented it into much smaller pieces.</p><p class=Pp>Typically, a multicast routing user-level process would need to know the forwarding bandwidth for some data flow. For example, the multicast routing process may want to timeout idle MFC entries, or in case of PIM-SM it can initiate (S,G) shortest-path switch if the bandwidth rate is above a threshold for example.</p><p class=Pp>The original solution for measuring the bandwidth of a dataflow was that a user-level process would periodically query the kernel about the number of forwarded packets/bytes per (S,G), and then based on those numbers it would estimate whether a source has been idle, or whether the source's transmission bandwidth is above a threshold. That solution is far from being scalable, hence the need for a new mechanism for bandwidth monitoring.</p><p class=Pp>Below is a description of the bandwidth monitoring mechanism.</p><ul class=Bl-bullet><li>If the bandwidth of a data flow satisfies some pre-defined filter, the kernel delivers an upcall on the multicast routing socket to the multicast routing process that has installed that filter.</li><li>The bandwidth-upcall filters are installed per (S,G). There can be more than one filter per (S,G).</li><li>Instead of supporting all possible comparison operations (i.e., &lt; &lt;= == != &gt; &gt;= ), there is support only for the &lt;= and &gt;= operations, because this makes the kernel-level implementation simpler, and because practically we need only those two. Further, the missing operations can be simulated by secondary user-level filtering of those &lt;= and &gt;= filters. For example, to simulate !=, then we need to install filter “bw &lt;= 0xffffffff”, and after an upcall is received, we need to check whether “measured_bw != expected_bw”.</li><li>The bandwidth-upcall mechanism is enabled by <code class=Fn>setsockopt</code>(<var class=Fa>MRT_API_CONFIG</var>) for the <code class=Dv>MRT_MFC_BW_UPCALL</code> flag.</li><li>The bandwidth-upcall filters are added/deleted by the new <code class=Fn>setsockopt</code>(<var class=Fa>MRT_ADD_BW_UPCALL</var>) and <code class=Fn>setsockopt</code>(<var class=Fa>MRT_DEL_BW_UPCALL</var>) respectively (with the appropriate <var class=Vt>struct bw_upcall</var> argument of course).</li></ul><p class=Pp>From application point of view, a developer needs to know about the following:</p><div class="Bd Pp"><pre>
+/*
+ * Structure for installing or delivering an upcall if the
+ * measured bandwidth is above or below a threshold.
+ *
+ * User programs (e.g. daemons) may have a need to know when the
+ * bandwidth used by some data flow is above or below some threshold.
+ * This interface allows the userland to specify the threshold (in
+ * bytes and/or packets) and the measurement interval. Flows are
+ * all packet with the same source and destination IP address.
+ * At the moment the code is only used for multicast destinations
+ * but there is nothing that prevents its use for unicast.
+ *
+ * The measurement interval cannot be shorter than some Tmin (currently, 3s).
+ * The threshold is set in packets and/or bytes per_interval.
+ *
+ * Measurement works as follows:
+ *
+ * For &gt;= measurements:
+ * The first packet marks the start of a measurement interval.
+ * During an interval we count packets and bytes, and when we
+ * pass the threshold we deliver an upcall and we are done.
+ * The first packet after the end of the interval resets the
+ * count and restarts the measurement.
+ *
+ * For &lt;= measurement:
+ * We start a timer to fire at the end of the interval, and
+ * then for each incoming packet we count packets and bytes.
+ * When the timer fires, we compare the value with the threshold,
+ * schedule an upcall if we are below, and restart the measurement
+ * (reschedule timer and zero counters).
+ */
+
+struct bw_data {
+        struct timeval  b_time;
+        uint64_t        b_packets;
+        uint64_t        b_bytes;
+};
+
+struct bw_upcall {
+        struct in_addr  bu_src;         /* source address            */
+        struct in_addr  bu_dst;         /* destination address       */
+        uint32_t        bu_flags;       /* misc flags (see below)    */
+#define BW_UPCALL_UNIT_PACKETS (1 &lt;&lt; 0) /* threshold (in packets)    */
+#define BW_UPCALL_UNIT_BYTES   (1 &lt;&lt; 1) /* threshold (in bytes)      */
+#define BW_UPCALL_GEQ          (1 &lt;&lt; 2) /* upcall if bw &gt;= threshold */
+#define BW_UPCALL_LEQ          (1 &lt;&lt; 3) /* upcall if bw &lt;= threshold */
+#define BW_UPCALL_DELETE_ALL   (1 &lt;&lt; 4) /* delete all upcalls for s,d*/
+        struct bw_data  bu_threshold;   /* the bw threshold          */
+        struct bw_data  bu_measured;    /* the measured bw           */
+};
+
+/* max. number of upcalls to deliver together */
+#define BW_UPCALLS_MAX				128
+/* min. threshold time interval for bandwidth measurement */
+#define BW_UPCALL_THRESHOLD_INTERVAL_MIN_SEC	3
+#define BW_UPCALL_THRESHOLD_INTERVAL_MIN_USEC	0
+</pre></div><p class=Pp>The <var class=Vt>bw_upcall</var> structure is used as an argument to <code class=Fn>setsockopt</code>(<var class=Fa>MRT_ADD_BW_UPCALL</var>) and <code class=Fn>setsockopt</code>(<var class=Fa>MRT_DEL_BW_UPCALL</var>). Each <code class=Fn>setsockopt</code>(<var class=Fa>MRT_ADD_BW_UPCALL</var>) installs a filter in the kernel for the source and destination address in the <var class=Vt>bw_upcall</var> argument, and that filter will trigger an upcall according to the following pseudo-algorithm:</p><div class="Bd Pp"><pre>
+ if (bw_upcall_oper IS "&gt;=") {
+    if (((bw_upcall_unit &amp; PACKETS == PACKETS) &amp;&amp;
+         (measured_packets &gt;= threshold_packets)) ||
+        ((bw_upcall_unit &amp; BYTES == BYTES) &amp;&amp;
+         (measured_bytes &gt;= threshold_bytes)))
+       SEND_UPCALL("measured bandwidth is &gt;= threshold");
+  }
+  if (bw_upcall_oper IS "&lt;=" &amp;&amp; measured_interval &gt;= threshold_interval) {
+    if (((bw_upcall_unit &amp; PACKETS == PACKETS) &amp;&amp;
+         (measured_packets &lt;= threshold_packets)) ||
+        ((bw_upcall_unit &amp; BYTES == BYTES) &amp;&amp;
+         (measured_bytes &lt;= threshold_bytes)))
+       SEND_UPCALL("measured bandwidth is &lt;= threshold");
+  }
+</pre></div><p class=Pp>In the same <var class=Vt>bw_upcall</var> the unit can be specified in both BYTES and PACKETS. However, the GEQ and LEQ flags are mutually exclusive.</p><p class=Pp>Basically, an upcall is delivered if the measured bandwidth is &gt;= or &lt;= the threshold bandwidth (within the specified measurement interval). For practical reasons, the smallest value for the measurement interval is 3 seconds. If smaller values are allowed, then the bandwidth estimation may be less accurate, or the potentially very high frequency of the generated upcalls may introduce too much overhead. For the &gt;= operation, the answer may be known before the end of <var class=Va>threshold_interval</var>, therefore the upcall may be delivered earlier. For the &lt;= operation however, we must wait until the threshold interval has expired to know the answer.</p><p class=Pp>Example of usage:</p><div class="Bd Pp"><pre>
+struct bw_upcall bw_upcall;
+/* Assign all bw_upcall fields as appropriate */
+memset(&amp;bw_upcall, 0, sizeof(bw_upcall));
+memcpy(&amp;bw_upcall.bu_src, &amp;source, sizeof(bw_upcall.bu_src));
+memcpy(&amp;bw_upcall.bu_dst, &amp;group, sizeof(bw_upcall.bu_dst));
+bw_upcall.bu_threshold.b_data = threshold_interval;
+bw_upcall.bu_threshold.b_packets = threshold_packets;
+bw_upcall.bu_threshold.b_bytes = threshold_bytes;
+if (is_threshold_in_packets)
+    bw_upcall.bu_flags |= BW_UPCALL_UNIT_PACKETS;
+if (is_threshold_in_bytes)
+    bw_upcall.bu_flags |= BW_UPCALL_UNIT_BYTES;
+do {
+    if (is_geq_upcall) {
+        bw_upcall.bu_flags |= BW_UPCALL_GEQ;
+        break;
+    }
+    if (is_leq_upcall) {
+        bw_upcall.bu_flags |= BW_UPCALL_LEQ;
+        break;
+    }
+    return (ERROR);
+} while (0);
+setsockopt(mrouter_s4, IPPROTO_IP, MRT_ADD_BW_UPCALL,
+          (void *)&amp;bw_upcall, sizeof(bw_upcall));
+</pre></div><p class=Pp>To delete a single filter, then use <code class=Dv>MRT_DEL_BW_UPCALL</code>, and the fields of bw_upcall must be set exactly same as when <code class=Dv>MRT_ADD_BW_UPCALL</code> was called.</p><p class=Pp>To delete all bandwidth filters for a given (S,G), then only the <var class=Va>bu_src</var> and <var class=Va>bu_dst</var> fields in <var class=Vt>struct bw_upcall</var> need to be set, and then just set only the <code class=Dv>BW_UPCALL_DELETE_ALL</code> flag inside field <var class=Va>bw_upcall.bu_flags</var>.</p><p class=Pp>The bandwidth upcalls are received by aggregating them in the new upcall message:</p><div class="Bd Pp"><pre>
+#define IGMPMSG_BW_UPCALL  4  /* BW monitoring upcall */
+</pre></div><p class=Pp>This message is an array of <var class=Vt>struct bw_upcall</var> elements (up to <code class=Dv>BW_UPCALLS_MAX</code> = 128). The upcalls are delivered when there are 128 pending upcalls, or when 1 second has expired since the previous upcall (whichever comes first). In an <var class=Vt>struct upcall</var> element, the <var class=Va>bu_measured</var> field is filled-in to indicate the particular measured values. However, because of the way the particular intervals are measured, the user should be careful how <var class=Va>bu_measured.b_time</var> is used. For example, if the filter is installed to trigger an upcall if the number of packets is &gt;= 1, then <var class=Va>bu_measured</var> may have a value of zero in the upcalls after the first one, because the measured interval for &gt;= filters is “clocked” by the forwarded packets. Hence, this upcall mechanism should not be used for measuring the exact value of the bandwidth of the forwarded data. To measure the exact bandwidth, the user would need to get the forwarded packets statistics with the <code class=Fn>ioctl</code>(<var class=Fa>SIOCGETSGCNT</var>) mechanism (see the <a class=Sx href=#Programming_Guide>Programming Guide</a> section) .</p><p class=Pp>Note that the upcalls for a filter are delivered until the specific filter is deleted, but no more frequently than once per <var class=Va>bu_threshold.b_time</var>. For example, if the filter is specified to deliver a signal if bw &gt;= 1 packet, the first packet will trigger a signal, but the next upcall will be triggered no earlier than <var class=Va>bu_threshold.b_time</var> after the previous upcall.</p></section></section><section class=Sh><h2 class=Sh id=SEE_ALSO><a class=permalink href=#SEE_ALSO>SEE ALSO</a></h2><a class=Xr href=getsockopt.2.html>getsockopt(2)</a>, <a class=Xr href=recvfrom.2.html>recvfrom(2)</a>, <a class=Xr href=recvmsg.2.html>recvmsg(2)</a>, <a class=Xr href=setsockopt.2.html>setsockopt(2)</a>, <a class=Xr href=socket.2.html>socket(2)</a>, <a class=Xr href=sourcefilter.3.html>sourcefilter(3)</a>, <a class=Xr href=altq.4.html>altq(4)</a>, <a class=Xr href=dummynet.4.html>dummynet(4)</a>, <a class=Xr href=gif.4.html>gif(4)</a>, <a class=Xr href=gre.4.html>gre(4)</a>, <a class=Xr href=icmp6.4.html>icmp6(4)</a>, <a class=Xr href=igmp.4.html>igmp(4)</a>, <a class=Xr href=inet.4.html>inet(4)</a>, <a class=Xr href=inet6.4.html>inet6(4)</a>, <a class=Xr href=intro.4.html>intro(4)</a>, <a class=Xr href=ip.4.html>ip(4)</a>, <a class=Xr href=ip6.4.html>ip6(4)</a>, <a class=Xr href=mld.4.html>mld(4)</a>, <a class=Xr href=pim.4.html>pim(4)</a></section><section class=Sh><h2 class=Sh id=HISTORY><a class=permalink href=#HISTORY>HISTORY</a></h2> The Distance Vector Multicast Routing Protocol (DVMRP) was the first developed multicast routing protocol. Later, other protocols such as Multicast Extensions to OSPF (MOSPF) and Core Based Trees (CBT), were developed as well. Routers at autonomous system boundaries may now exchange multicast routes with peers via the Border Gateway Protocol (BGP). Many other routing protocols are able to redistribute multicast routes for use with <code class=Dv>PIM-SM</code> and <code class=Dv>PIM-DM</code>. </section><section class=Sh><h2 class=Sh id=AUTHORS><a class=permalink href=#AUTHORS>AUTHORS</a></h2> The original multicast code was written by <span class=An>David Waitzman</span> (BBN Labs), and later modified by the following individuals: <span class=An>Steve Deering</span> (Stanford), <span class=An>Mark J. Steiglitz</span> (Stanford), <span class=An>Van Jacobson</span> (LBL), <span class=An>Ajit Thyagarajan</span> (PARC), <span class=An>Bill Fenner</span> (PARC). The IPv6 multicast support was implemented by the KAME project (<span class=Pa>https://www.kame.net</span>), and was based on the IPv4 multicast code. The advanced multicast API and the multicast bandwidth monitoring were implemented by <span class=An>Pavlin Radoslavov</span> (ICSI) in collaboration with <span class=An>Chris Brown</span> (NextHop). The IGMPv3 and MLDv2 multicast support was implemented by <span class=An>Bruce Simpson</span>. <p class=Pp>This manual page was written by <span class=An>Pavlin Radoslavov</span> (ICSI).</p></section></div><table class=foot><tr><td class=foot-date>May 27, 2009</td><td class=foot-os>FreeBSD 13.1-RELEASE-p2</td></tr></table></div></div><html><body><footer><p>©️ 2023 Inobulles</p></footer></body></html></body></html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html><head><meta charset=utf-8><title>style(9)</title><keywords content=man,style></keywords><style>:root { --monitor-bleed: rgba(183, 0, 255, 0.46); --gradient: -webkit-linear-gradient(50deg, rgb(126, 119, 255), rgb(255, 34, 137)); --background-colour: #fff; --title-colour: #000; --text-colour: #000; --article-colour: #fff; --accent-colour: #4385f5; --muted-colour: #555; --shadow-colour: rgba(183, 0, 255, 0.487); --border-radius: 12px; --blur-radius: 0px; --navbar-colour: #fffc; --navbar-shadow: rgba(183, 0, 255, 0.1) 0 8px 32px; --code-background: #ddd; } .dark { visibility: hidden; } @media (prefers-color-scheme: light) { } @media (prefers-color-scheme: dark) { :root { --monitor-bleed: rgba(183, 0, 255, 0.172); --gradient: -webkit-linear-gradient(50deg, rgb(255, 79, 79), rgb(255, 52, 221)); --background-colour: #000; --title-colour: #fff; --text-colour: #ddd; --article-colour: #00000033; --accent-colour: #98beff; --muted-colour: #999; --shadow-colour: #ff00cc29; --blur-radius: 96px; --navbar-colour: #000a; --navbar-shadow: rgba(183, 0, 255, 0.05) 0 8px 32px; --code-background: #111; } .dark { visibility: visible; } .light { visibility: hidden; } } html, body { overflow-x: hidden; } body { background-image: url(bg.svg); background-size: cover; margin: 0; background-color: var(--background-colour); color: var(--text-colour); font-size: 22px; font-display: optional; font-family: "Montserrat", sans-serif; overflow-y: hidden; } h1 { color: var(--title-colour); font-size: 70px; font-display: optional; font-family: "Montserrat", sans-serif; } h2 { color: var(--title-colour); font-size: 40px; font-display: optional; font-family: "Montserrat", sans-serif; } h3 { color: var(--title-colour); font-size: 24px; font-display: optional; font-family: "Roboto Slab", serif; } q, blockquote { font-style: italic; white-space: pre-wrap; padding-left: 42px; } pre { margin: 32px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; } strong { background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; } code { border-radius: 8px; background-color: var(--code-background); } pre { white-space: pre-wrap; } .info-container { max-width: 400px; margin: 32px; } .info-container p { margin-inline: 16px; margin-block: 32px; text-align: justify; font-size: 18px; } .labeled-img { max-width: 100%; position: relative; } .labeled-img div { position: absolute; bottom: 0; width: 100%; height: 70%; background: linear-gradient(to bottom, transparent, black); border-radius: var(--border-radius); } .labeled-img div h2 { color: white; position: absolute; bottom: 0; left: 32px; } .labeled-img img { width: 100%; border-radius: var(--border-radius); } a { background: var(--gradient); background-clip: none; color: var(--background-colour); font-weight: bold; text-decoration: none; border-radius: 3px; } a:hover { background: var(--text-colour); } .link, .link:hover { background: none; } button { background: var(--gradient); color: var(--background-colour); box-shadow: none; border: none; border-radius: 48px; padding: 8px; padding-left: 32px; padding-right: 32px; margin: 24px; font-size: 24px; font-display: optional; font-family: "Montserrat", sans-serif; font-weight: bold; cursor: pointer; transition: background .2s, color .2s, opacity .2s, box-shadow .2s, transform .2s; } button:hover { box-shadow: var(--shadow-colour) 0 8px 32px; transform: translateY(-4px); } button:active { transform: none; opacity: 50%; } .clickable { padding: 2px; transition: background-color 0.05s ease-out; border-radius: var(--border-radius); } .clickable:hover { background-color: var(--shadow-colour); } .docs-container { margin: auto; margin-top: 64px; max-width: 1200px; display: grid; justify-content: center; grid-template-columns: 1fr 3fr; } .docs { max-width: 900px; } .sidebar { min-width: 250px; position: fixed; padding: 16px; display: grid; justify-content: center; grid-auto-flow: row; grid-gap: 32px; padding-top: 64px; } .sidebar * { margin: auto; display: grid; justify-content: left; grid-auto-flow: column; grid-gap: 8px; } .sidebar p { font-size: 18px; } .sidebar-item { color: var(--text-colour); background: none; padding-inline: 8px; width: 100%; height: 100%; } .sidebar-item div svg { fill: var(--text-colour); } .navbar-container { width: 100vw; height: 48px; } .navbar { position: fixed; z-index: 100; width: 100vw; background-color: var(--navbar-colour); backdrop-filter: blur(20px); display: grid; justify-content: center; grid-auto-flow: column; grid-gap: 32px; padding: 12px; } .navbar * { margin: auto; display: grid; justify-content: center; grid-auto-flow: column; grid-gap: 8px; } .navbar p { font-size: 18px; } .navbar-logo { height: 100%; max-height: 32px; stroke: var(--text-colour); } .navbar-icon { fill: var(--text-colour); } .navbar-item { color: var(--text-colour); background-color: transparent; padding-inline: 8px; width: 100%; height: 100%; border-radius: 8px; } @media only screen and (max-width: 800px) { .navbar-item { position: absolute; visibility: hidden; } } footer { text-align: center; padding: 64px; border-radius: 64px 64px 0 0; background: -webkit-linear-gradient(50deg, transparent, var(--monitor-bleed)); } footer p { margin: auto; } .permalink { color: var(--text-colour); background: none; } .permalink:hover { background: none; } </style></head><body><html><body><div class=navbar-container><div class=navbar><a class="navbar-item clickable link" href=https://inobulles.github.io><div><svg class=navbar-logo fill=none height=24px viewbox="0 0 144 144" width=24px xmlns=http://www.w3.org/2000/svg><path d=m22,115l50,-88l50,88l-100,0z stroke-width=20 transform="rotate(180 72 72)"></path></svg><p><strong>aquaBSD</strong></p></div></a><a class="navbar-item clickable link" href=https://inobulles.github.io/docs><div><svg class=navbar-icon fill=none height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg><p>Develop</p></div></a><a class="navbar-item clickable link" href=mailto:inobulles@gmail.com><div><svg class=navbar-icon fill=none height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z"></path></svg><p>Contact</p></div></a><a class="navbar-item clickable link" href=#><div><svg class=navbar-icon enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M19.46,9.12l-2.78,1.15 c-0.51-1.36-1.58-2.44-2.95-2.94l1.15-2.78C16.98,5.35,18.65,7.02,19.46,9.12z M12,15c-1.66,0-3-1.34-3-3s1.34-3,3-3s3,1.34,3,3 S13.66,15,12,15z M9.13,4.54l1.17,2.78c-1.38,0.5-2.47,1.59-2.98,2.97L4.54,9.13C5.35,7.02,7.02,5.35,9.13,4.54z M4.54,14.87 l2.78-1.15c0.51,1.38,1.59,2.46,2.97,2.96l-1.17,2.78C7.02,18.65,5.35,16.98,4.54,14.87z M14.88,19.46l-1.15-2.78 c1.37-0.51,2.45-1.59,2.95-2.97l2.78,1.17C18.65,16.98,16.98,18.65,14.88,19.46z"></path></g></svg><p>Support</p></div></a><a class="navbar-item clickable link" href=#><div><svg class=navbar-icon fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 12 7.4l3.38 4.6L17 10.83 14.92 8H20v6z"></path></svg><p>Log in</p></div></a></div></div></body></html><div class=docs-container><html><body><div class=sidebar-container><div class=sidebar><a class="sidebar-item clickable" href=https://inobulles.github.io/docs><div><svg fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M12.36 6l.4 2H18v6h-3.36l-.4-2H7V6h5.36M14 4H5v17h2v-7h5.6l.4 2h7V6h-5.6L14 4z"></path></svg><p>Introduction</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/struct><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><rect fill=none height=24 width=24></rect><path d="M22,11V3h-7v3H9V3H2v8h7V8h2v10h4v3h7v-8h-7v3h-2V8h2v3H22z M7,9H4V5h3V9z M17,15h3v4h-3V15z M17,5h3v4h-3V5z"></path></svg><p>OS Components</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/dev-tools><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><g><rect height=8.48 transform="matrix(0.7071 -0.7071 0.7071 0.7071 -6.8717 17.6255)" width=3 x=16.34 y=12.87></rect><path d="M17.5,10c1.93,0,3.5-1.57,3.5-3.5c0-0.58-0.16-1.12-0.41-1.6l-2.7,2.7L16.4,6.11l2.7-2.7C18.62,3.16,18.08,3,17.5,3 C15.57,3,14,4.57,14,6.5c0,0.41,0.08,0.8,0.21,1.16l-1.85,1.85l-1.78-1.78l0.71-0.71L9.88,5.61L12,3.49 c-1.17-1.17-3.07-1.17-4.24,0L4.22,7.03l1.41,1.41H2.81L2.1,9.15l3.54,3.54l0.71-0.71V9.15l1.41,1.41l0.71-0.71l1.78,1.78 l-7.41,7.41l2.12,2.12L16.34,9.79C16.7,9.92,17.09,10,17.5,10z"></path></g></g></svg><p>Developer Tools</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/create-app><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24 x=0></rect></g><g><g><polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25"></polygon><polygon points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75"></polygon><path d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z"></path></g></g></svg><p>Creating an App</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/packaging><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><g><path d="M20,2H4C3,2,2,2.9,2,4v3.01C2,7.73,2.43,8.35,3,8.7V20c0,1.1,1.1,2,2,2h14c0.9,0,2-0.9,2-2V8.7c0.57-0.35,1-0.97,1-1.69V4 C22,2.9,21,2,20,2z M19,20H5V9h14V20z M20,7H4V4h16V7z"></path><rect height=2 width=6 x=9 y=12></rect></g></g></svg><p>Packaging Apps</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/publishing><div><svg fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M13 3v1h-2V3h2m-1 7.11l5.38 1.77 2.39.78-1.12 3.97c-.54-.3-.94-.71-1.14-.94L16 13.96l-1.51 1.72c-.34.4-1.28 1.32-2.49 1.32s-2.15-.92-2.49-1.32L8 13.96l-1.51 1.72c-.2.23-.6.63-1.14.93l-1.13-3.96 2.4-.79L12 10.11M15 1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1zM6 9.97V6h12v3.97L12 8 6 9.97zm10 9.71c-1.22.85-2.61 1.28-4 1.28s-2.78-.43-4-1.28C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 1.26.64 2.63.97 4 .97s2.74-.32 4-.97c1.26.65 2.62.99 4 .99h2v-2h-2c-1.39 0-2.78-.47-4-1.32z"></path></svg><p>Publishing Apps</p></div></a></div></div></body></html><div class=docs><h1>style(9)</h1><table class=head><tr><td class=head-ltitle>STYLE(9)</td><td class=head-vol>FreeBSD Kernel Developer's Manual</td><td class=head-rtitle>STYLE(9)</td></tr></table><div class=manual-text><section class=Sh><h2 class=Sh id=NAME><a class=permalink href=#NAME>NAME</a></h2><code class=Nm>style</code> — <div class=Nd>kernel source file style guide</div></section><section class=Sh><h2 class=Sh id=DESCRIPTION><a class=permalink href=#DESCRIPTION>DESCRIPTION</a></h2> This file specifies the preferred style for kernel source files in the <span class=Ux>FreeBSD</span> source tree. It is also a guide for the preferred userland code style. The preferred line width is 80 characters, but some exceptions are made when a slightly longer line is clearer or easier to read. Anything that is frequently grepped for, such as diagnostic, error, or panic messages, should not be broken up over multiple lines despite this rule. Many of the style rules are implicit in the examples. Be careful to check the examples before assuming that <code class=Nm>style</code> is silent on an issue. <div class="Bd Pp"><pre>
+/*
+ * Style guide for FreeBSD.  Based on the CSRG's KNF (Kernel Normal Form).
+ *
+ *	@(#)style	1.14 (Berkeley) 4/28/95
+ */
+
+/*
+ * VERY important single-line comments look like this.
+ */
+
+/* Most single-line comments look like this. */
+
+/*
+ * Multi-line comments look like this.  Make them real sentences.  Fill
+ * them so they look like real paragraphs.
+ */
+</pre></div><p class=Pp>The copyright header should be a multi-line comment, with the first line of the comment having a dash after the star like so:</p><div class="Bd Pp"><pre>
+/*-
+ * SPDX-License-Identifier: BSD-2-Clause-FreeBSD
+ *
+ * Copyright (c) 1984-2025 John Q. Public
+ *
+ * Long, boring license goes here, but trimmed for brevity
+ */
+</pre></div><p class=Pp>An automatic script collects license information from the tree for all comments that start in the first column with “<code class=Li>/*-</code>”. If you desire to flag <a class=Xr href=indent.1.html>indent(1)</a> to not reformat a comment that starts in the first column which is not a license or copyright notice, change the dash to a star for those comments. Comments starting in columns other than the first are never considered license statements. Use the appropriate SPDX-License-Identifier line before the copyright. If the copyright assertion contains the phrase “<code class=Li>All Rights Reserved</code>” that should be on the same line as the word “<code class=Li>Copyright</code>”. You should not insert a new copyright line between an old copyright line and this phrase. Instead, you should insert a new copyright phrase after a pre-existing “<code class=Li>All Rights Reserved</code>” line. When making changes, it is acceptable to fold an “<code class=Li>All Rights Reserved</code>” line with each of the “<code class=Li>Copyright</code>” lines. For files that have the “<code class=Li>All Rights Reserved</code>” line on the same line(s) as the word “<code class=Li>Copyright</code>”, new copyright assertions should be added last. New “<code class=Li>Copyright</code>” lines should only be added when making substantial changes to the file, not for trivial changes.</p><p class=Pp>After any copyright and license comment, there is a blank line. Include <code class=Li>$FreeBSD$</code> or <code class=Li>__FBSDID("$FreeBSD$");</code> only if you are certain the new code will be merged to stable/12. The tag will be removed from legacy code in the future. Non-C/C++ source files follow the example above, while C/C++ source files follow the one below. Version control system ID tags should only exist once in a file (unlike in this one). All VCS (version control system) revision identification in files obtained from elsewhere should be maintained, including, where applicable, multiple IDs showing a file's history. In general, do not edit foreign IDs or their infrastructure. Unless otherwise wrapped (such as “<code class=Li>#if defined(LIBC_SCCS)</code>”), enclose both in “<code class=Li>#if 0 ... #endif</code>” to hide any uncompilable bits and to keep the IDs out of object files. Only add “<code class=Li>From: </code>” in front of foreign VCS IDs if the file is renamed. Add “<code class=Li>From: </code>” and FreeBSD git hash with full path name if the file was derived from another FreeBSD file and include relevant copyright info from the original file.</p><div class="Bd Pp"><pre>
+/* From: @(#)style	1.14 (Berkeley) 4/28/95 */
+</pre></div><p class=Pp>Leave one blank line before the header files.</p><p class=Pp>Kernel include files (<span class=Pa>sys/*.h</span>) come first. If <code class=In>&lt;<a class=In href=../src/sys/cdefs.h.html>sys/cdefs.h</a>&gt;</code> is needed for <code class=Fn>__FBSDID</code>(), include it first. If either <code class=In>&lt;<a class=In href=../src/sys/types.h.html>sys/types.h</a>&gt;</code> or <code class=In>&lt;<a class=In href=../src/sys/param.h.html>sys/param.h</a>&gt;</code> is needed, include it before other include files. (<code class=In>&lt;<a class=In href=../src/sys/param.h.html>sys/param.h</a>&gt;</code> includes <code class=In>&lt;<a class=In href=../src/sys/types.h.html>sys/types.h</a>&gt;</code>; do not include both.) Next, include <code class=In>&lt;<a class=In href=../src/sys/systm.h.html>sys/systm.h</a>&gt;</code>, if needed. The remaining kernel headers should be sorted alphabetically.</p><div class="Bd Pp"><pre>
+#include &lt;sys/types.h&gt;	/* Non-local includes in angle brackets. */
+#include &lt;sys/systm.h&gt;
+#include &lt;sys/endian.h&gt;
+#include &lt;sys/lock.h&gt;
+#include &lt;sys/queue.h&gt;
+</pre></div><p class=Pp>For a network program, put the network include files next.</p><div class="Bd Pp"><pre>
+#include &lt;net/if.h&gt;
+#include &lt;net/if_dl.h&gt;
+#include &lt;net/route.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;protocols/rwhod.h&gt;
+</pre></div><p class=Pp>Do not include files from <span class=Pa>/usr/include</span> in the kernel.</p><p class=Pp>Leave a blank line before the next group, the <span class=Pa>/usr/include</span> files, which should be sorted alphabetically by name.</p><div class="Bd Pp"><pre>
+#include &lt;stdio.h&gt;
+</pre></div><p class=Pp>Global pathnames are defined in <code class=In>&lt;<a class=In href=../src/paths.h.html>paths.h</a>&gt;</code>. Pathnames local to the program go in “<span class=Pa>pathnames.h</span>” in the local directory.</p><div class="Bd Pp"><pre>
+#include &lt;paths.h&gt;
+</pre></div><p class=Pp>Leave another blank line before the local include files.</p><div class="Bd Pp"><pre>
+#include "pathnames.h"		/* Local includes in double quotes. */
+</pre></div><p class=Pp>Do not <code class=Ic>#define</code> or declare names in the implementation namespace except for implementing application interfaces.</p><p class=Pp>The names of “unsafe” macros (ones that have side effects), and the names of macros for manifest constants, are all in uppercase. The expansions of expression-like macros are either a single token or have outer parentheses. Put a single space or tab character between the <code class=Ic>#define</code> and the macro name, but be consistent within a file. If a macro is an inline expansion of a function, the function name is all in lowercase and the macro has the same name all in uppercase. Right-justify the backslashes; it makes it easier to read. If the macro encapsulates a compound statement, enclose it in a <code class=Ic>do</code> loop, so that it can safely be used in <code class=Ic>if</code> statements. Any final statement-terminating semicolon should be supplied by the macro invocation rather than the macro, to make parsing easier for pretty-printers and editors.</p><div class="Bd Pp"><pre>
+#define	MACRO(x, y) do {						\
+	variable = (x) + (y);						\
+	(y) += 2;							\
+} while (0)
+</pre></div><p class=Pp>When code is conditionally compiled using <code class=Ic>#ifdef</code> or <code class=Ic>#if</code>, a comment may be added following the matching <code class=Ic>#endif</code> or <code class=Ic>#else</code> to permit the reader to easily discern where conditionally compiled code regions end. This comment should be used only for (subjectively) long regions, regions greater than 20 lines, or where a series of nested <code class=Ic>#ifdef 's</code> may be confusing to the reader. The comment should be separated from the <code class=Ic>#endif</code> or <code class=Ic>#else</code> by a single space. For short conditionally compiled regions, a closing comment should not be used.</p><p class=Pp>The comment for <code class=Ic>#endif</code> should match the expression used in the corresponding <code class=Ic>#if</code> or <code class=Ic>#ifdef</code>. The comment for <code class=Ic>#else</code> and <code class=Ic>#elif</code> should match the inverse of the expression(s) used in the preceding <code class=Ic>#if</code> and/or <code class=Ic>#elif</code> statements. In the comments, the subexpression “<code class=Li>defined(FOO)</code>” is abbreviated as “<code class=Li>FOO</code>”. For the purposes of comments, “<code class=Ic>#ifndef</code><code class=Li>FOO</code>” is treated as “<code class=Ic>#if</code><code class=Li>!defined(FOO)</code>”.</p><div class="Bd Pp"><pre>
+#ifdef KTRACE
+#include &lt;sys/ktrace.h&gt;
+#endif
+
+#ifdef COMPAT_43
+/* A large region here, or other conditional code. */
+#else /* !COMPAT_43 */
+/* Or here. */
+#endif /* COMPAT_43 */
+
+#ifndef COMPAT_43
+/* Yet another large region here, or other conditional code. */
+#else /* COMPAT_43 */
+/* Or here. */
+#endif /* !COMPAT_43 */
+</pre></div><p class=Pp>The project prefers the use of <span class=St>ISO/IEC 9899:1999 (“ISO C99”)</span> unsigned integer identifiers of the form <var class=Vt>uintXX_t</var> rather than the older <span class=Ux>BSD</span>-style integer identifiers of the form <var class=Vt>u_intXX_t</var>. New code should use the former, and old code should be converted to the new form if other major work is being done in that area and there is no overriding reason to prefer the older <span class=Ux>BSD</span>-style. Like white-space commits, care should be taken in making <var class=Vt>uintXX_t</var> only commits.</p><p class=Pp>Similarly, the project prefers the use of ISO C99 <var class=Vt>bool</var> rather than the older <var class=Vt>int</var> or <var class=Vt>boolean_t</var>. New code should use <var class=Vt>bool</var>, and old code may be converted if it is reasonable to do so. Literal values are named <code class=Dv>true</code> and <code class=Dv>false</code>. These are preferred to the old spellings <code class=Dv>TRUE</code> and <code class=Dv>FALSE</code>. Userspace code should include <code class=In>&lt;<a class=In href=../src/stdbool.h.html>stdbool.h</a>&gt;</code>, while kernel code should include <code class=In>&lt;<a class=In href=../src/sys/types.h.html>sys/types.h</a>&gt;</code>.</p><p class=Pp>Likewise, the project prefers ISO C99 designated initializers when it makes sense to do so.</p><p class=Pp>Enumeration values are all uppercase.</p><div class="Bd Pp"><pre>
+enum enumtype { ONE, TWO } et;
+</pre></div><p class=Pp>The use of internal_underscores in identifiers is preferred over camelCase or TitleCase.</p><p class=Pp>In declarations, do not put any whitespace between asterisks and adjacent tokens, except for tokens that are identifiers related to types. (These identifiers are the names of basic types, type qualifiers, and <code class=Ic>typedef</code>-names other than the one being declared.) Separate these identifiers from asterisks using a single space.</p><p class=Pp>When declaring variables in structures, declare them sorted by use, then by size (largest to smallest), and then in alphabetical order. The first category normally does not apply, but there are exceptions. Each one gets its own line. Try to make the structure readable by aligning the member names using either one or two tabs depending upon your judgment. You should use one tab only if it suffices to align at least 90% of the member names. Names following extremely long types should be separated by a single space.</p><p class=Pp>Major structures should be declared at the top of the file in which they are used, or in separate header files if they are used in multiple source files. Use of the structures should be by separate declarations and should be <code class=Ic>extern</code> if they are declared in a header file.</p><div class="Bd Pp"><pre>
+struct foo {
+	struct foo	*next;		/* List of active foo. */
+	struct mumble	amumble;	/* Comment for mumble. */
+	int		bar;		/* Try to align the comments. */
+	struct verylongtypename *baz;	/* Does not fit in 2 tabs. */
+};
+struct foo *foohead;			/* Head of global foo list. */
+</pre></div><p class=Pp>Use <a class=Xr href=queue.3.html>queue(3)</a> macros rather than rolling your own lists, whenever possible. Thus, the previous example would be better written:</p><div class="Bd Pp"><pre>
+#include &lt;sys/queue.h&gt;
+
+struct foo {
+	LIST_ENTRY(foo)	link;		/* Use queue macros for foo lists. */
+	struct mumble	amumble;	/* Comment for mumble. */
+	int		bar;		/* Try to align the comments. */
+	struct verylongtypename *baz;	/* Does not fit in 2 tabs. */
+};
+LIST_HEAD(, foo) foohead;		/* Head of global foo list. */
+</pre></div><p class=Pp>Avoid using typedefs for structure types. Typedefs are problematic because they do not properly hide their underlying type; for example you need to know if the typedef is the structure itself or a pointer to the structure. In addition they must be declared exactly once, whereas an incomplete structure type can be mentioned as many times as necessary. Typedefs are difficult to use in stand-alone header files: the header that defines the typedef must be included before the header that uses it, or by the header that uses it (which causes namespace pollution), or there must be a back-door mechanism for obtaining the typedef.</p><p class=Pp>When convention requires a <code class=Ic>typedef</code>, make its name match the struct tag. Avoid typedefs ending in “<code class=Li>_t</code>”, except as specified in Standard C or by POSIX.</p><div class="Bd Pp"><pre>
+/* Make the structure name match the typedef. */
+typedef	struct bar {
+	int	level;
+} BAR;
+typedef	int		foo;		/* This is foo. */
+typedef	const long	baz;		/* This is baz. */
+</pre></div><p class=Pp>All functions are prototyped somewhere.</p><p class=Pp>Function prototypes for private functions (i.e., functions not used elsewhere) go at the top of the first source module. Functions local to one source module should be declared <code class=Ic>static</code>.</p><p class=Pp>Functions used from other parts of the kernel are prototyped in the relevant include file. Function prototypes should be listed in a logical order, preferably alphabetical unless there is a compelling reason to use a different ordering.</p><p class=Pp>Functions that are used locally in more than one module go into a separate header file, e.g., “<span class=Pa>extern.h</span>”.</p><p class=Pp>In general code can be considered “new code” when it makes up about 50% or more of the file(s) involved. This is enough to break precedents in the existing code and use the current <code class=Nm>style</code> guidelines.</p><p class=Pp>The kernel has a name associated with parameter types, e.g., in the kernel use:</p><div class="Bd Pp"><pre>
+void	function(int fd);
+</pre></div><p class=Pp>In header files visible to userland applications, prototypes that are visible must use either “protected” names (ones beginning with an underscore) or no names with the types. It is preferable to use protected names. E.g., use:</p><div class="Bd Pp"><pre>
+void	function(int);
+</pre></div><p class=Pp>or:</p><div class="Bd Pp"><pre>
+void	function(int _fd);
+</pre></div><p class=Pp>Prototypes may have an extra space after a tab to enable function names to line up:</p><div class="Bd Pp"><pre>
+static char	*function(int _arg, const char *_arg2, struct foo *_arg3,
+		    struct bar *_arg4);
+static void	 usage(void);
+
+/*
+ * All major routines should have a comment briefly describing what
+ * they do.  The comment before the "main" routine should describe
+ * what the program does.
+ */
+int
+main(int argc, char *argv[])
+{
+	char *ep;
+	long num;
+	int ch;
+</pre></div><p class=Pp>For consistency, <a class=Xr href=getopt.3.html>getopt(3)</a> should be used to parse options. Options should be sorted in the <a class=Xr href=getopt.3.html>getopt(3)</a> call and the <code class=Ic>switch</code> statement, unless parts of the <code class=Ic>switch</code> cascade. Elements in a <code class=Ic>switch</code> statement that cascade should have a <code class=Li>FALLTHROUGH</code> comment. Numerical arguments should be checked for accuracy. Code which is unreachable for non-obvious reasons may be marked /* <code class=Li>NOTREACHED</code> */.</p><div class="Bd Pp"><pre>
+	while ((ch = getopt(argc, argv, "abNn:")) != -1)
+		switch (ch) {		/* Indent the switch. */
+		case 'a':		/* Do not indent the case. */
+			aflag = 1;	/* Indent case body one tab. */
+			/* FALLTHROUGH */
+		case 'b':
+			bflag = 1;
+			break;
+		case 'N':
+			Nflag = 1;
+			break;
+		case 'n':
+			num = strtol(optarg, &amp;ep, 10);
+			if (num &lt;= 0 || *ep != '\0') {
+				warnx("illegal number, -n argument -- %s",
+				    optarg);
+				usage();
+			}
+			break;
+		case '?':
+		default:
+			usage();
+		}
+	argc -= optind;
+	argv += optind;
+</pre></div><p class=Pp>Space after keywords (<code class=Ic>if</code>, <code class=Ic>while</code>, <code class=Ic>for</code>, <code class=Ic>return</code>, <code class=Ic>switch</code>). Two styles of braces (‘<code class=Li>{</code>’ and ‘<code class=Li>}</code>’) are allowed for single line statements. Either they are used for all single statements, or they are used only where needed for clarity. Usage within a function should be consistent. Forever loops are done with <code class=Ic>for</code>'s, not <code class=Ic>while</code>'s.</p><div class="Bd Pp"><pre>
+	for (p = buf; *p != '\0'; ++p)
+		;	/* nothing */
+	for (;;)
+		stmt;
+	for (;;) {
+		z = a + really + long + statement + that + needs +
+		    two + lines + gets + indented + four + spaces +
+		    on + the + second + and + subsequent + lines;
+	}
+	for (;;) {
+		if (cond)
+			stmt;
+	}
+	if (val != NULL)
+		val = realloc(val, newsize);
+</pre></div><p class=Pp>Parts of a <code class=Ic>for</code> loop may be left empty.</p><div class="Bd Pp"><pre>
+	for (; cnt &lt; 15; cnt++) {
+		stmt1;
+		stmt2;
+	}
+</pre></div><p class=Pp>A <code class=Ic>for</code> loop may declare and initialize its counting variable.</p><div class="Bd Pp"><pre>
+	for (int i = 0; i &lt; 15; i++) {
+		stmt1;
+	}
+</pre></div><p class=Pp>Indentation is an 8 character tab. Second level indents are four spaces. If you have to wrap a long statement, put the operator at the end of the line.</p><div class="Bd Pp"><pre>
+	while (cnt &lt; 20 &amp;&amp; this_variable_name_is_too_long &amp;&amp;
+	    ep != NULL)
+		z = a + really + long + statement + that + needs +
+		    two + lines + gets + indented + four + spaces +
+		    on + the + second + and + subsequent + lines;
+</pre></div><p class=Pp>Do not add whitespace at the end of a line, and only use tabs followed by spaces to form the indentation. Do not use more spaces than a tab will produce and do not use spaces in front of tabs.</p><p class=Pp>Closing and opening braces go on the same line as the <code class=Ic>else</code>. Braces that are not necessary may be left out.</p><div class="Bd Pp"><pre>
+	if (test)
+		stmt;
+	else if (bar) {
+		stmt;
+		stmt;
+	} else
+		stmt;
+</pre></div><p class=Pp>No spaces after function names. Commas have a space after them. No spaces after ‘<code class=Li>(</code>’ or ‘<code class=Li>[</code>’ or preceding ‘<code class=Li>]</code>’ or ‘<code class=Li>)</code>’ characters.</p><div class="Bd Pp"><pre>
+	error = function(a1, a2);
+	if (error != 0)
+		exit(error);
+</pre></div><p class=Pp>Unary operators do not require spaces, binary operators do. Do not use parentheses unless they are required for precedence or unless the statement is confusing without them. Remember that other people may confuse easier than you. Do YOU understand the following?</p><div class="Bd Pp"><pre>
+	a = b-&gt;c[0] + ~d == (e || f) || g &amp;&amp; h ? i : j &gt;&gt; 1;
+	k = !(l &amp; FLAGS);
+</pre></div><p class=Pp>Exits should be 0 on success, or 1 on failure.</p><div class="Bd Pp"><pre>
+	exit(0);	/*
+			 * Avoid obvious comments such as
+			 * "Exit 0 on success."
+			 */
+}
+</pre></div><p class=Pp>The function type should be on a line by itself preceding the function. The opening brace of the function body should be on a line by itself.</p><div class="Bd Pp"><pre>
+static char *
+function(int a1, int a2, float fl, int a4, struct bar *bar)
+{
+</pre></div><p class=Pp>When declaring variables in functions declare them sorted by size, then in alphabetical order; multiple ones per line are okay. If a line overflows reuse the type keyword. Variables may be initialized where declared especially when they are constant for the rest of the scope. Declarations may be in any block, but must be placed before statements. Calls to complicated functions should be avoided when initializing variables.</p><div class="Bd Pp"><pre>
+	struct foo one, *two;
+	struct baz *three = bar_get_baz(bar);
+	double four;
+	int *five, six;
+	char *seven, eight, nine, ten, eleven, twelve;
+
+	four = my_complicated_function(a1, f1, a4);
+</pre></div><p class=Pp>Do not declare functions inside other functions; ANSI C says that such declarations have file scope regardless of the nesting of the declaration. Hiding file declarations in what appears to be a local scope is undesirable and will elicit complaints from a good compiler.</p><p class=Pp>Casts and <code class=Ic>sizeof</code>'s are not followed by a space. <code class=Ic>sizeof</code>'s are written with parenthesis always. The redundant parenthesis rules do not apply to <code class=Fn>sizeof</code>(<var class=Fa>var</var>) instances.</p><p class=Pp><code class=Dv>NULL</code> is the preferred null pointer constant. Use <code class=Dv>NULL</code> instead of (<var class=Vt>type *</var>)0 or (<var class=Vt>type *</var>)<code class=Dv>NULL</code> in contexts where the compiler knows the type, e.g., in assignments. Use (<var class=Vt>type *</var>)<code class=Dv>NULL</code> in other contexts, in particular for all function args. (Casting is essential for variadic args and is necessary for other args if the function prototype might not be in scope.) Test pointers against <code class=Dv>NULL</code>, e.g., use:</p><div class="Bd Pp"><pre>
+(p = f()) == NULL
+</pre></div><p class=Pp>not:</p><div class="Bd Pp"><pre>
+!(p = f())
+</pre></div><p class=Pp>Do not use <code class=Ic>!</code> for tests unless it is a boolean, e.g., use:</p><div class="Bd Pp"><pre>
+if (*p == '\0')
+</pre></div><p class=Pp>not:</p><div class="Bd Pp"><pre>
+if (!*p)
+</pre></div><p class=Pp>Routines returning <var class=Vt>void *</var> should not have their return values cast to any pointer type.</p><p class=Pp>Values in <code class=Ic>return</code> statements should be enclosed in parentheses.</p><p class=Pp>Use <a class=Xr href=err.3.html>err(3)</a> or <a class=Xr href=warn.3.html>warn(3)</a>, do not roll your own.</p><div class="Bd Pp"><pre>
+	if ((four = malloc(sizeof(struct foo))) == NULL)
+		err(1, (char *)NULL);
+	if ((six = (int *)overflow()) == NULL)
+		errx(1, "number overflowed");
+	return (eight);
+}
+</pre></div><p class=Pp>Do not use K&amp;R style declarations or definitions, they are obsolete and are forbidden in C23. Compilers warn of their use and some treat them as an error by default. When converting K&amp;R style definitions to ANSI style, preserve any comments about parameters.</p><p class=Pp>Long parameter lists are wrapped with a normal four space indent.</p><p class=Pp>Variable numbers of arguments should look like this:</p><div class="Bd Pp"><pre>
+#include &lt;stdarg.h&gt;
+
+void
+vaf(const char *fmt, ...)
+{
+	va_list ap;
+
+	va_start(ap, fmt);
+	STUFF;
+	va_end(ap);
+	/* No return needed for void functions. */
+}
+
+static void
+usage(void)
+{
+	/* Optional blank line goes here. */
+</pre></div><p class=Pp>Optionally, insert a blank line at the beginning of functions with no local variables. Older versions of this <code class=Nm>style</code> document required the blank line convention, so it is widely used in existing code.</p><p class=Pp>Do not insert a blank line at the beginning of functions with local variables. Instead, these should have local variable declarations first, followed by one blank line, followed by the first statement.</p><p class=Pp>Use <a class=Xr href=printf.3.html>printf(3)</a>, not <a class=Xr href=fputs.3.html>fputs(3)</a>, <a class=Xr href=puts.3.html>puts(3)</a>, <a class=Xr href=putchar.3.html>putchar(3)</a>, whatever; it is faster and usually cleaner, not to mention avoiding stupid bugs.</p><p class=Pp>Usage statements should look like the manual pages <a class=Sx href=#SYNOPSIS>SYNOPSIS</a>. The usage statement should be structured in the following order:</p><ol class=Bl-enum><li>Options without operands come first, in alphabetical order, inside a single set of brackets (‘<code class=Li>[</code>’ and ‘<code class=Li>]</code>’).</li><li>Options with operands come next, also in alphabetical order, with each option and its argument inside its own pair of brackets.</li><li>Required arguments (if any) are next, listed in the order they should be specified on the command line.</li><li>Finally, any optional arguments should be listed, listed in the order they should be specified, and all inside brackets.</li></ol><p class=Pp>A bar (‘<code class=Li>|</code>’) separates “either-or” options/arguments, and multiple options/arguments which are specified together are placed in a single set of brackets.</p><div class="Bd Pp Bd-indent"><pre>
+"usage: f [-aDde] [-b b_arg] [-m m_arg] req1 req2 [opt1 [opt2]]\n"
+"usage: f [-a | -b] [-c [-dEe] [-n number]]\n"
+</pre></div><div class="Bd Pp"><pre>
+	(void)fprintf(stderr, "usage: f [-ab]\n");
+	exit(1);
+}
+</pre></div><p class=Pp>Note that the manual page options description should list the options in pure alphabetical order. That is, without regard to whether an option takes arguments or not. The alphabetical ordering should take into account the case ordering shown above.</p><p class=Pp>New core kernel code should be reasonably compliant with the <code class=Nm>style</code> guides. The guidelines for third-party maintained modules and device drivers are more relaxed but at a minimum should be internally consistent with their style.</p><p class=Pp>Stylistic changes (including whitespace changes) are hard on the source repository and are to be avoided without good reason. Code that is approximately <span class=Ux>FreeBSD</span> KNF <code class=Nm>style</code> compliant in the repository must not diverge from compliance.</p><p class=Pp>Whenever possible, code should be run through a code checker (e.g., various static analyzers or <code class=Nm>cc</code><code class=Fl>-Wall</code>) and produce minimal warnings.</p><p class=Pp>New code should use <code class=Fn>_Static_assert</code>() instead of the older <code class=Fn>CTASSERT</code>().</p></section><section class=Sh><h2 class=Sh id=FILES><a class=permalink href=#FILES>FILES</a></h2><dl class=Bl-tag><dt><span class=Pa>/usr/src/tools/tools/editing/freebsd.el</span></dt><dd>An Emacs plugin to follow the <span class=Ux>FreeBSD</span><code class=Nm>style</code> indentation rules.</dd><dt><span class=Pa>/usr/src/tools/tools/editing/freebsd.vim</span></dt><dd>A Vim plugin to follow the <span class=Ux>FreeBSD</span><code class=Nm>style</code> indentation rules.</dd></dl></section><section class=Sh><h2 class=Sh id=SEE_ALSO><a class=permalink href=#SEE_ALSO>SEE ALSO</a></h2><a class=Xr href=indent.1.html>indent(1)</a>, <a class=Xr href=err.3.html>err(3)</a>, <a class=Xr href=warn.3.html>warn(3)</a>, <a class=Xr href=style.Makefile.5.html>style.Makefile(5)</a>, <a class=Xr href=style.mdoc.5.html>style.mdoc(5)</a>, <a class=Xr href=style.lua.9.html>style.lua(9)</a></section><section class=Sh><h2 class=Sh id=HISTORY><a class=permalink href=#HISTORY>HISTORY</a></h2> This manual page is largely based on the <span class=Pa>src/admin/style/style</span> file from the <span class=Ux>4.4BSD-Lite2</span> release, with occasional updates to reflect the current practice and desire of the <span class=Ux>FreeBSD</span> project. <span class=Pa>src/admin/style/style</span> is a codification by the CSRG of the programming style of Ken Thompson and Dennis Ritchie in <span class=Ux>Version 6 AT&amp;T UNIX</span>. </section></div><table class=foot><tr><td class=foot-date>July 28, 2022</td><td class=foot-os>FreeBSD 13.1-RELEASE-p2</td></tr></table></div></div><html><body><footer><p>©️ 2023 Inobulles</p></footer></body></html></body></html>
