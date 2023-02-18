@@ -12,14 +12,3 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
-
-footer {
-	text-align: center;
-	padding: 64px;
-	border-radius: 64px 64px 0 0;
-	background: -webkit-linear-gradient(50deg, transparent, var(--monitor-bleed));
-}
-
-footer p {
-	margin: auto;
-}

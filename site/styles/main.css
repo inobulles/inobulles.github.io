@@ -105,27 +105,6 @@ pre {
 	white-space: -o-pre-wrap;
 	word-wrap: break-word;
 }
-/*
-footer {
-	text-align: center;
-	box-shadow: var(--shadow-colour) 0 8px 32px;
-	border-top-left-radius: var(--border-radius);
-	border-top-right-radius: var(--border-radius);
-	background-color: var(--accent-colour);
-	color: var(--background-colour);
-	padding: 32px;
-	margin: -32px;
-	margin-top: 32px;
-}
-
-footer p {
-	text-align: center;
-}
-
-footer a {
-	color: var(--background-colour);
-	text-decoration: underline;
-} */
 
 strong {
 	/* text-shadow: rgba(255, 0, 191, 0.534) 0 0 16px; */
