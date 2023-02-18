@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html><head><meta charset=utf-8><title>PEM_write_DHparams(3)</title><keywords content=man,PEM_write_DHparams></keywords><style>:root { --monitor-bleed: rgba(183, 0, 255, 0.46); --gradient: -webkit-linear-gradient(50deg, rgb(126, 119, 255), rgb(255, 34, 137)); --background-colour: #fff; --title-colour: #000; --text-colour: #000; --article-colour: #fff; --accent-colour: #4385f5; --muted-colour: #555; --shadow-colour: rgba(183, 0, 255, 0.487); --border-radius: 12px; --blur-radius: 0px; --navbar-colour: #fffc; --navbar-shadow: rgba(183, 0, 255, 0.1) 0 8px 32px; --code-background: #ddd; } .dark { visibility: hidden; } @media (prefers-color-scheme: light) { } @media (prefers-color-scheme: dark) { :root { --monitor-bleed: rgba(183, 0, 255, 0.172); --gradient: -webkit-linear-gradient(50deg, rgb(255, 79, 79), rgb(255, 52, 221)); --background-colour: #000; --title-colour: #fff; --text-colour: #ddd; --article-colour: #00000033; --accent-colour: #98beff; --muted-colour: #999; --shadow-colour: #ff00cc29; --blur-radius: 96px; --navbar-colour: #000a; --navbar-shadow: rgba(183, 0, 255, 0.05) 0 8px 32px; --code-background: #111; } .dark { visibility: visible; } .light { visibility: hidden; } } html, body { overflow-x: hidden; } body { background-image: url(bg.svg); background-size: cover; margin: 0; background-color: var(--background-colour); color: var(--text-colour); font-size: 22px; font-display: optional; font-family: "Montserrat", sans-serif; overflow-y: hidden; } h1 { color: var(--title-colour); font-size: 70px; font-display: optional; font-family: "Montserrat", sans-serif; } h2 { color: var(--title-colour); font-size: 40px; font-display: optional; font-family: "Montserrat", sans-serif; } h3 { color: var(--title-colour); font-size: 24px; font-display: optional; font-family: "Roboto Slab", serif; } q, blockquote { font-style: italic; white-space: pre-wrap; padding-left: 42px; } pre { margin: 32px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; } strong { background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; } code { border-radius: 8px; background-color: var(--code-background); } pre { white-space: pre-wrap; } .info-container { max-width: 400px; margin: 32px; } .info-container p { margin-inline: 16px; margin-block: 32px; text-align: justify; font-size: 18px; } .labeled-img { max-width: 100%; position: relative; } .labeled-img div { position: absolute; bottom: 0; width: 100%; height: 70%; background: linear-gradient(to bottom, transparent, black); border-radius: var(--border-radius); } .labeled-img div h2 { color: white; position: absolute; bottom: 0; left: 32px; } .labeled-img img { width: 100%; border-radius: var(--border-radius); } a { background: var(--gradient); background-clip: none; color: var(--background-colour); font-weight: bold; text-decoration: none; border-radius: 3px; } a:hover { background: var(--text-colour); } .link, .link:hover { background: none; } button { background: var(--gradient); color: var(--background-colour); box-shadow: none; border: none; border-radius: 48px; padding: 8px; padding-left: 32px; padding-right: 32px; margin: 24px; font-size: 24px; font-display: optional; font-family: "Montserrat", sans-serif; font-weight: bold; cursor: pointer; transition: background .2s, color .2s, opacity .2s, box-shadow .2s, transform .2s; } button:hover { box-shadow: var(--shadow-colour) 0 8px 32px; transform: translateY(-4px); } button:active { transform: none; opacity: 50%; } .clickable { padding: 2px; transition: background-color 0.05s ease-out; border-radius: var(--border-radius); } .clickable:hover { background-color: var(--shadow-colour); } .docs-container { margin: auto; margin-top: 64px; max-width: 1200px; display: grid; justify-content: center; grid-template-columns: 1fr 3fr; } .docs { max-width: 900px; } .sidebar { min-width: 250px; position: fixed; padding: 16px; display: grid; justify-content: center; grid-auto-flow: row; grid-gap: 32px; padding-top: 64px; } .sidebar * { margin: auto; display: grid; justify-content: left; grid-auto-flow: column; grid-gap: 8px; } .sidebar p { font-size: 18px; } .sidebar-item { color: var(--text-colour); background: none; padding-inline: 8px; width: 100%; height: 100%; } .sidebar-item div svg { fill: var(--text-colour); } .navbar-container { width: 100vw; height: 48px; } .navbar { position: fixed; z-index: 100; width: 100vw; background-color: var(--navbar-colour); backdrop-filter: blur(20px); display: grid; justify-content: center; grid-auto-flow: column; grid-gap: 32px; padding: 12px; } .navbar * { margin: auto; display: grid; justify-content: center; grid-auto-flow: column; grid-gap: 8px; } .navbar p { font-size: 18px; } .navbar-logo { height: 100%; max-height: 32px; stroke: var(--text-colour); } .navbar-icon { fill: var(--text-colour); } .navbar-item { color: var(--text-colour); background-color: transparent; padding-inline: 8px; width: 100%; height: 100%; border-radius: 8px; } @media only screen and (max-width: 800px) { .navbar-item { position: absolute; visibility: hidden; } } footer { text-align: center; padding: 64px; border-radius: 64px 64px 0 0; background: -webkit-linear-gradient(50deg, transparent, var(--monitor-bleed)); } footer p { margin: auto; } .permalink { color: var(--text-colour); background: none; } .permalink:hover { background: none; } </style></head><body><html><body><div class=navbar-container><div class=navbar><a class="navbar-item clickable link" href=https://inobulles.github.io><div><svg class=navbar-logo fill=none height=24px viewbox="0 0 144 144" width=24px xmlns=http://www.w3.org/2000/svg><path d=m22,115l50,-88l50,88l-100,0z stroke-width=20 transform="rotate(180 72 72)"></path></svg><p><strong>aquaBSD</strong></p></div></a><a class="navbar-item clickable link" href=https://inobulles.github.io/docs><div><svg class=navbar-icon fill=none height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg><p>Develop</p></div></a><a class="navbar-item clickable link" href=mailto:inobulles@gmail.com><div><svg class=navbar-icon fill=none height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z"></path></svg><p>Contact</p></div></a><a class="navbar-item clickable link" href=#><div><svg class=navbar-icon enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M19.46,9.12l-2.78,1.15 c-0.51-1.36-1.58-2.44-2.95-2.94l1.15-2.78C16.98,5.35,18.65,7.02,19.46,9.12z M12,15c-1.66,0-3-1.34-3-3s1.34-3,3-3s3,1.34,3,3 S13.66,15,12,15z M9.13,4.54l1.17,2.78c-1.38,0.5-2.47,1.59-2.98,2.97L4.54,9.13C5.35,7.02,7.02,5.35,9.13,4.54z M4.54,14.87 l2.78-1.15c0.51,1.38,1.59,2.46,2.97,2.96l-1.17,2.78C7.02,18.65,5.35,16.98,4.54,14.87z M14.88,19.46l-1.15-2.78 c1.37-0.51,2.45-1.59,2.95-2.97l2.78,1.17C18.65,16.98,16.98,18.65,14.88,19.46z"></path></g></svg><p>Support</p></div></a><a class="navbar-item clickable link" href=#><div><svg class=navbar-icon fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 12 7.4l3.38 4.6L17 10.83 14.92 8H20v6z"></path></svg><p>Log in</p></div></a></div></div></body></html><div class=docs-container><html><body><div class=sidebar-container><div class=sidebar><a class="sidebar-item clickable" href=https://inobulles.github.io/docs><div><svg fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M12.36 6l.4 2H18v6h-3.36l-.4-2H7V6h5.36M14 4H5v17h2v-7h5.6l.4 2h7V6h-5.6L14 4z"></path></svg><p>Introduction</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/struct><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><rect fill=none height=24 width=24></rect><path d="M22,11V3h-7v3H9V3H2v8h7V8h2v10h4v3h7v-8h-7v3h-2V8h2v3H22z M7,9H4V5h3V9z M17,15h3v4h-3V15z M17,5h3v4h-3V5z"></path></svg><p>OS Components</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/dev-tools><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><g><rect height=8.48 transform="matrix(0.7071 -0.7071 0.7071 0.7071 -6.8717 17.6255)" width=3 x=16.34 y=12.87></rect><path d="M17.5,10c1.93,0,3.5-1.57,3.5-3.5c0-0.58-0.16-1.12-0.41-1.6l-2.7,2.7L16.4,6.11l2.7-2.7C18.62,3.16,18.08,3,17.5,3 C15.57,3,14,4.57,14,6.5c0,0.41,0.08,0.8,0.21,1.16l-1.85,1.85l-1.78-1.78l0.71-0.71L9.88,5.61L12,3.49 c-1.17-1.17-3.07-1.17-4.24,0L4.22,7.03l1.41,1.41H2.81L2.1,9.15l3.54,3.54l0.71-0.71V9.15l1.41,1.41l0.71-0.71l1.78,1.78 l-7.41,7.41l2.12,2.12L16.34,9.79C16.7,9.92,17.09,10,17.5,10z"></path></g></g></svg><p>Developer Tools</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/create-app><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24 x=0></rect></g><g><g><polygon points="19,9 20.25,6.25 23,5 20.25,3.75 19,1 17.75,3.75 15,5 17.75,6.25"></polygon><polygon points="19,15 17.75,17.75 15,19 17.75,20.25 19,23 20.25,20.25 23,19 20.25,17.75"></polygon><path d="M11.5,9.5L9,4L6.5,9.5L1,12l5.5,2.5L9,20l2.5-5.5L17,12L11.5,9.5z M9.99,12.99L9,15.17l-0.99-2.18L5.83,12l2.18-0.99 L9,8.83l0.99,2.18L12.17,12L9.99,12.99z"></path></g></g></svg><p>Creating an App</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/packaging><div><svg enable-background="new 0 0 24 24" fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><g><rect fill=none height=24 width=24></rect></g><g><g><path d="M20,2H4C3,2,2,2.9,2,4v3.01C2,7.73,2.43,8.35,3,8.7V20c0,1.1,1.1,2,2,2h14c0.9,0,2-0.9,2-2V8.7c0.57-0.35,1-0.97,1-1.69V4 C22,2.9,21,2,20,2z M19,20H5V9h14V20z M20,7H4V4h16V7z"></path><rect height=2 width=6 x=9 y=12></rect></g></g></svg><p>Packaging Apps</p></div></a><a class="sidebar-item clickable" href=https://inobulles.github.io/docs/publishing><div><svg fill=#000000 height=24px viewbox="0 0 24 24" width=24px xmlns=http://www.w3.org/2000/svg><path d="M0 0h24v24H0V0z" fill=none></path><path d="M13 3v1h-2V3h2m-1 7.11l5.38 1.77 2.39.78-1.12 3.97c-.54-.3-.94-.71-1.14-.94L16 13.96l-1.51 1.72c-.34.4-1.28 1.32-2.49 1.32s-2.15-.92-2.49-1.32L8 13.96l-1.51 1.72c-.2.23-.6.63-1.14.93l-1.13-3.96 2.4-.79L12 10.11M15 1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1zM6 9.97V6h12v3.97L12 8 6 9.97zm10 9.71c-1.22.85-2.61 1.28-4 1.28s-2.78-.43-4-1.28C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 1.26.64 2.63.97 4 .97s2.74-.32 4-.97c1.26.65 2.62.99 4 .99h2v-2h-2c-1.39 0-2.78-.47-4-1.32z"></path></svg><p>Publishing Apps</p></div></a></div></div></body></html><div class=docs><h1>PEM_write_DHparams(3)</h1><table class=head><tr><td class=head-ltitle>PEM_READ_BIO_PRIVATEKEY(3)</td><td class=head-vol>OpenSSL</td><td class=head-rtitle>PEM_READ_BIO_PRIVATEKEY(3)</td></tr></table><div class=manual-text><br><section class=Sh><h2 class=Sh id=NAME><a class=permalink href=#NAME>NAME</a></h2> pem_password_cb, PEM_read_bio_PrivateKey, PEM_read_PrivateKey, PEM_write_bio_PrivateKey, PEM_write_bio_PrivateKey_traditional, PEM_write_PrivateKey, PEM_write_bio_PKCS8PrivateKey, PEM_write_PKCS8PrivateKey, PEM_write_bio_PKCS8PrivateKey_nid, PEM_write_PKCS8PrivateKey_nid, PEM_read_bio_PUBKEY, PEM_read_PUBKEY, PEM_write_bio_PUBKEY, PEM_write_PUBKEY, PEM_read_bio_RSAPrivateKey, PEM_read_RSAPrivateKey, PEM_write_bio_RSAPrivateKey, PEM_write_RSAPrivateKey, PEM_read_bio_RSAPublicKey, PEM_read_RSAPublicKey, PEM_write_bio_RSAPublicKey, PEM_write_RSAPublicKey, PEM_read_bio_RSA_PUBKEY, PEM_read_RSA_PUBKEY, PEM_write_bio_RSA_PUBKEY, PEM_write_RSA_PUBKEY, PEM_read_bio_DSAPrivateKey, PEM_read_DSAPrivateKey, PEM_write_bio_DSAPrivateKey, PEM_write_DSAPrivateKey, PEM_read_bio_DSA_PUBKEY, PEM_read_DSA_PUBKEY, PEM_write_bio_DSA_PUBKEY, PEM_write_DSA_PUBKEY, PEM_read_bio_Parameters, PEM_write_bio_Parameters, PEM_read_bio_DSAparams, PEM_read_DSAparams, PEM_write_bio_DSAparams, PEM_write_DSAparams, PEM_read_bio_DHparams, PEM_read_DHparams, PEM_write_bio_DHparams, PEM_write_DHparams, PEM_read_bio_X509, PEM_read_X509, PEM_write_bio_X509, PEM_write_X509, PEM_read_bio_X509_AUX, PEM_read_X509_AUX, PEM_write_bio_X509_AUX, PEM_write_X509_AUX, PEM_read_bio_X509_REQ, PEM_read_X509_REQ, PEM_write_bio_X509_REQ, PEM_write_X509_REQ, PEM_write_bio_X509_REQ_NEW, PEM_write_X509_REQ_NEW, PEM_read_bio_X509_CRL, PEM_read_X509_CRL, PEM_write_bio_X509_CRL, PEM_write_X509_CRL, PEM_read_bio_PKCS7, PEM_read_PKCS7, PEM_write_bio_PKCS7, PEM_write_PKCS7 - PEM routines </section><section class=Sh><h2 class=Sh id=SYNOPSIS><a class=permalink href=#SYNOPSIS>SYNOPSIS</a></h2><pre>
+ #include &lt;openssl/pem.h&gt;
+
+ typedef int pem_password_cb(char *buf, int size, int rwflag, void *u);
+
+ EVP_PKEY *PEM_read_bio_PrivateKey(BIO *bp, EVP_PKEY **x,
+                                   pem_password_cb *cb, void *u);
+ EVP_PKEY *PEM_read_PrivateKey(FILE *fp, EVP_PKEY **x,
+                               pem_password_cb *cb, void *u);
+ int PEM_write_bio_PrivateKey(BIO *bp, EVP_PKEY *x, const EVP_CIPHER *enc,
+                              unsigned char *kstr, int klen,
+                              pem_password_cb *cb, void *u);
+ int PEM_write_bio_PrivateKey_traditional(BIO *bp, EVP_PKEY *x,
+                                          const EVP_CIPHER *enc,
+                                          unsigned char *kstr, int klen,
+                                          pem_password_cb *cb, void *u);
+ int PEM_write_PrivateKey(FILE *fp, EVP_PKEY *x, const EVP_CIPHER *enc,
+                          unsigned char *kstr, int klen,
+                          pem_password_cb *cb, void *u);
+
+ int PEM_write_bio_PKCS8PrivateKey(BIO *bp, EVP_PKEY *x, const EVP_CIPHER *enc,
+                                   char *kstr, int klen,
+                                   pem_password_cb *cb, void *u);
+ int PEM_write_PKCS8PrivateKey(FILE *fp, EVP_PKEY *x, const EVP_CIPHER *enc,
+                               char *kstr, int klen,
+                               pem_password_cb *cb, void *u);
+ int PEM_write_bio_PKCS8PrivateKey_nid(BIO *bp, EVP_PKEY *x, int nid,
+                                       char *kstr, int klen,
+                                       pem_password_cb *cb, void *u);
+ int PEM_write_PKCS8PrivateKey_nid(FILE *fp, EVP_PKEY *x, int nid,
+                                   char *kstr, int klen,
+                                   pem_password_cb *cb, void *u);
+
+ EVP_PKEY *PEM_read_bio_PUBKEY(BIO *bp, EVP_PKEY **x,
+                               pem_password_cb *cb, void *u);
+ EVP_PKEY *PEM_read_PUBKEY(FILE *fp, EVP_PKEY **x,
+                           pem_password_cb *cb, void *u);
+ int PEM_write_bio_PUBKEY(BIO *bp, EVP_PKEY *x);
+ int PEM_write_PUBKEY(FILE *fp, EVP_PKEY *x);
+
+ RSA *PEM_read_bio_RSAPrivateKey(BIO *bp, RSA **x,
+                                 pem_password_cb *cb, void *u);
+ RSA *PEM_read_RSAPrivateKey(FILE *fp, RSA **x,
+                             pem_password_cb *cb, void *u);
+ int PEM_write_bio_RSAPrivateKey(BIO *bp, RSA *x, const EVP_CIPHER *enc,
+                                 unsigned char *kstr, int klen,
+                                 pem_password_cb *cb, void *u);
+ int PEM_write_RSAPrivateKey(FILE *fp, RSA *x, const EVP_CIPHER *enc,
+                             unsigned char *kstr, int klen,
+                             pem_password_cb *cb, void *u);
+
+ RSA *PEM_read_bio_RSAPublicKey(BIO *bp, RSA **x,
+                                pem_password_cb *cb, void *u);
+ RSA *PEM_read_RSAPublicKey(FILE *fp, RSA **x,
+                            pem_password_cb *cb, void *u);
+ int PEM_write_bio_RSAPublicKey(BIO *bp, RSA *x);
+ int PEM_write_RSAPublicKey(FILE *fp, RSA *x);
+
+ RSA *PEM_read_bio_RSA_PUBKEY(BIO *bp, RSA **x,
+                              pem_password_cb *cb, void *u);
+ RSA *PEM_read_RSA_PUBKEY(FILE *fp, RSA **x,
+                          pem_password_cb *cb, void *u);
+ int PEM_write_bio_RSA_PUBKEY(BIO *bp, RSA *x);
+ int PEM_write_RSA_PUBKEY(FILE *fp, RSA *x);
+
+ DSA *PEM_read_bio_DSAPrivateKey(BIO *bp, DSA **x,
+                                 pem_password_cb *cb, void *u);
+ DSA *PEM_read_DSAPrivateKey(FILE *fp, DSA **x,
+                             pem_password_cb *cb, void *u);
+ int PEM_write_bio_DSAPrivateKey(BIO *bp, DSA *x, const EVP_CIPHER *enc,
+                                 unsigned char *kstr, int klen,
+                                 pem_password_cb *cb, void *u);
+ int PEM_write_DSAPrivateKey(FILE *fp, DSA *x, const EVP_CIPHER *enc,
+                             unsigned char *kstr, int klen,
+                             pem_password_cb *cb, void *u);
+
+ DSA *PEM_read_bio_DSA_PUBKEY(BIO *bp, DSA **x,
+                              pem_password_cb *cb, void *u);
+ DSA *PEM_read_DSA_PUBKEY(FILE *fp, DSA **x,
+                          pem_password_cb *cb, void *u);
+ int PEM_write_bio_DSA_PUBKEY(BIO *bp, DSA *x);
+ int PEM_write_DSA_PUBKEY(FILE *fp, DSA *x);
+
+ EVP_PKEY *PEM_read_bio_Parameters(BIO *bp, EVP_PKEY **x);
+ int PEM_write_bio_Parameters(BIO *bp, const EVP_PKEY *x);
+
+ DSA *PEM_read_bio_DSAparams(BIO *bp, DSA **x, pem_password_cb *cb, void *u);
+ DSA *PEM_read_DSAparams(FILE *fp, DSA **x, pem_password_cb *cb, void *u);
+ int PEM_write_bio_DSAparams(BIO *bp, DSA *x);
+ int PEM_write_DSAparams(FILE *fp, DSA *x);
+
+ DH *PEM_read_bio_DHparams(BIO *bp, DH **x, pem_password_cb *cb, void *u);
+ DH *PEM_read_DHparams(FILE *fp, DH **x, pem_password_cb *cb, void *u);
+ int PEM_write_bio_DHparams(BIO *bp, DH *x);
+ int PEM_write_DHparams(FILE *fp, DH *x);
+
+ X509 *PEM_read_bio_X509(BIO *bp, X509 **x, pem_password_cb *cb, void *u);
+ X509 *PEM_read_X509(FILE *fp, X509 **x, pem_password_cb *cb, void *u);
+ int PEM_write_bio_X509(BIO *bp, X509 *x);
+ int PEM_write_X509(FILE *fp, X509 *x);
+
+ X509 *PEM_read_bio_X509_AUX(BIO *bp, X509 **x, pem_password_cb *cb, void *u);
+ X509 *PEM_read_X509_AUX(FILE *fp, X509 **x, pem_password_cb *cb, void *u);
+ int PEM_write_bio_X509_AUX(BIO *bp, X509 *x);
+ int PEM_write_X509_AUX(FILE *fp, X509 *x);
+
+ X509_REQ *PEM_read_bio_X509_REQ(BIO *bp, X509_REQ **x,
+                                 pem_password_cb *cb, void *u);
+ X509_REQ *PEM_read_X509_REQ(FILE *fp, X509_REQ **x,
+                             pem_password_cb *cb, void *u);
+ int PEM_write_bio_X509_REQ(BIO *bp, X509_REQ *x);
+ int PEM_write_X509_REQ(FILE *fp, X509_REQ *x);
+ int PEM_write_bio_X509_REQ_NEW(BIO *bp, X509_REQ *x);
+ int PEM_write_X509_REQ_NEW(FILE *fp, X509_REQ *x);
+
+ X509_CRL *PEM_read_bio_X509_CRL(BIO *bp, X509_CRL **x,
+                                 pem_password_cb *cb, void *u);
+ X509_CRL *PEM_read_X509_CRL(FILE *fp, X509_CRL **x,
+                             pem_password_cb *cb, void *u);
+ int PEM_write_bio_X509_CRL(BIO *bp, X509_CRL *x);
+ int PEM_write_X509_CRL(FILE *fp, X509_CRL *x);
+
+ PKCS7 *PEM_read_bio_PKCS7(BIO *bp, PKCS7 **x, pem_password_cb *cb, void *u);
+ PKCS7 *PEM_read_PKCS7(FILE *fp, PKCS7 **x, pem_password_cb *cb, void *u);
+ int PEM_write_bio_PKCS7(BIO *bp, PKCS7 *x);
+ int PEM_write_PKCS7(FILE *fp, PKCS7 *x);
+</pre></section><section class=Sh><h2 class=Sh id=DESCRIPTION><a class=permalink href=#DESCRIPTION>DESCRIPTION</a></h2> The PEM functions read or write structures in PEM format. In this sense PEM format is simply base64 encoded data surrounded by header lines. <p class=Pp>For more details about the meaning of arguments see the <b>PEM FUNCTION ARGUMENTS</b> section.</p><p class=Pp>Each operation has four functions associated with it. For brevity the term "<b>TYPE</b> functions" will be used below to collectively refer to the <b>PEM_read_bio_TYPE()</b>, <b>PEM_read_TYPE()</b>, <b>PEM_write_bio_TYPE()</b>, and <b>PEM_write_TYPE()</b> functions.</p><p class=Pp>The <b>PrivateKey</b> functions read or write a private key in PEM format using an EVP_PKEY structure. The write routines use PKCS#8 private key format and are equivalent to <b>PEM_write_bio_PKCS8PrivateKey()</b>.The read functions transparently handle traditional and PKCS#8 format encrypted and unencrypted keys.</p><p class=Pp><b>PEM_write_bio_PrivateKey_traditional()</b> writes out a private key in the "traditional" format with a simple private key marker and should only be used for compatibility with legacy programs.</p><p class=Pp><b>PEM_write_bio_PKCS8PrivateKey()</b> and <b>PEM_write_PKCS8PrivateKey()</b> write a private key in an EVP_PKEY structure in PKCS#8 EncryptedPrivateKeyInfo format using PKCS#5 v2.0 password based encryption algorithms. The <b>cipher</b> argument specifies the encryption algorithm to use: unlike some other PEM routines the encryption is applied at the PKCS#8 level and not in the PEM headers. If <b>cipher</b> is NULL then no encryption is used and a PKCS#8 PrivateKeyInfo structure is used instead.</p><p class=Pp><b>PEM_write_bio_PKCS8PrivateKey_nid()</b> and <b>PEM_write_PKCS8PrivateKey_nid()</b> also write out a private key as a PKCS#8 EncryptedPrivateKeyInfo however it uses PKCS#5 v1.5 or PKCS#12 encryption algorithms instead. The algorithm to use is specified in the <b>nid</b> parameter and should be the NID of the corresponding OBJECT IDENTIFIER (see NOTES section).</p><p class=Pp>The <b>PUBKEY</b> functions process a public key using an EVP_PKEY structure. The public key is encoded as a SubjectPublicKeyInfo structure.</p><p class=Pp>The <b>RSAPrivateKey</b> functions process an RSA private key using an RSA structure. The write routines uses traditional format. The read routines handles the same formats as the <b>PrivateKey</b> functions but an error occurs if the private key is not RSA.</p><p class=Pp>The <b>RSAPublicKey</b> functions process an RSA public key using an RSA structure. The public key is encoded using a PKCS#1 RSAPublicKey structure.</p><p class=Pp>The <b>RSA_PUBKEY</b> functions also process an RSA public key using an RSA structure. However, the public key is encoded using a SubjectPublicKeyInfo structure and an error occurs if the public key is not RSA.</p><p class=Pp>The <b>DSAPrivateKey</b> functions process a DSA private key using a DSA structure. The write routines uses traditional format. The read routines handles the same formats as the <b>PrivateKey</b> functions but an error occurs if the private key is not DSA.</p><p class=Pp>The <b>DSA_PUBKEY</b> functions process a DSA public key using a DSA structure. The public key is encoded using a SubjectPublicKeyInfo structure and an error occurs if the public key is not DSA.</p><p class=Pp>The <b>Parameters</b> functions read or write key parameters in PEM format using an EVP_PKEY structure. The encoding depends on the type of key; for DSA key parameters, it will be a Dss-Parms structure as defined in RFC2459, and for DH key parameters, it will be a PKCS#3 DHparameter structure. <i>These functions</i><i>only exist for the </i><b><i>BIO</i></b><i> type</i>.</p><p class=Pp>The <b>DSAparams</b> functions process DSA parameters using a DSA structure. The parameters are encoded using a Dss-Parms structure as defined in RFC2459.</p><p class=Pp>The <b>DHparams</b> functions process DH parameters using a DH structure. The parameters are encoded using a PKCS#3 DHparameter structure.</p><p class=Pp>The <b>X509</b> functions process an X509 certificate using an X509 structure. They will also process a trusted X509 certificate but any trust settings are discarded.</p><p class=Pp>The <b>X509_AUX</b> functions process a trusted X509 certificate using an X509 structure.</p><p class=Pp>The <b>X509_REQ</b> and <b>X509_REQ_NEW</b> functions process a PKCS#10 certificate request using an X509_REQ structure. The <b>X509_REQ</b> write functions use <b>CERTIFICATE REQUEST</b> in the header whereas the <b>X509_REQ_NEW</b> functions use <b>NEW CERTIFICATE REQUEST</b> (as required by some CAs). The <b>X509_REQ</b> read functions will handle either form so there are no <b>X509_REQ_NEW</b> read functions.</p><p class=Pp>The <b>X509_CRL</b> functions process an X509 CRL using an X509_CRL structure.</p><p class=Pp>The <b>PKCS7</b> functions process a PKCS#7 ContentInfo using a PKCS7 structure.</p></section><section class=Sh><h2 class=Sh id=PEM_FUNCTION_ARGUMENTS><a class=permalink href=#PEM_FUNCTION_ARGUMENTS>PEM FUNCTION ARGUMENTS</a></h2> The PEM functions have many common arguments. <p class=Pp>The <b>bp</b> BIO parameter (if present) specifies the BIO to read from or write to.</p><p class=Pp>The <b>fp</b> FILE parameter (if present) specifies the FILE pointer to read from or write to.</p><p class=Pp>The PEM read functions all take an argument <b>TYPE **x</b> and return a <b>TYPE *</b> pointer. Where <b>TYPE</b> is whatever structure the function uses. If <b>x</b> is NULL then the parameter is ignored. If <b>x</b> is not NULL but <b>*x</b> is NULL then the structure returned will be written to <b>*x</b>. If neither <b>x</b> nor <b>*x</b> is NULL then an attempt is made to reuse the structure at <b>*x</b> (but see BUGS and EXAMPLES sections). Irrespective of the value of <b>x</b> a pointer to the structure is always returned (or NULL if an error occurred).</p><p class=Pp>The PEM functions which write private keys take an <b>enc</b> parameter which specifies the encryption algorithm to use, encryption is done at the PEM level. If this parameter is set to NULL then the private key is written in unencrypted form.</p><p class=Pp>The <b>cb</b> argument is the callback to use when querying for the pass phrase used for encrypted PEM structures (normally only private keys).</p><p class=Pp>For the PEM write routines if the <b>kstr</b> parameter is not NULL then <b>klen</b> bytes at <b>kstr</b> are used as the passphrase and <b>cb</b> is ignored.</p><p class=Pp>If the <b>cb</b> parameters is set to NULL and the <b>u</b> parameter is not NULL then the <b>u</b> parameter is interpreted as a null terminated string to use as the passphrase. If both <b>cb</b> and <b>u</b> are NULL then the default callback routine is used which will typically prompt for the passphrase on the current terminal with echoing turned off.</p><p class=Pp>The default passphrase callback is sometimes inappropriate (for example in a GUI application) so an alternative can be supplied. The callback routine has the following form:</p><p class=Pp></p><pre>
+ int cb(char *buf, int size, int rwflag, void *u);
+</pre><p class=Pp><b>buf</b> is the buffer to write the passphrase to. <b>size</b> is the maximum length of the passphrase (i.e. the size of buf). <b>rwflag</b> is a flag which is set to 0 when reading and 1 when writing. A typical routine will ask the user to verify the passphrase (for example by prompting for it twice) if <b>rwflag</b> is 1. The <b>u</b> parameter has the same value as the <b>u</b> parameter passed to the PEM routine. It allows arbitrary data to be passed to the callback by the application (for example a window handle in a GUI application). The callback <b>must</b> return the number of characters in the passphrase or -1 if an error occurred.</p></section><section class=Sh><h2 class=Sh id=NOTES><a class=permalink href=#NOTES>NOTES</a></h2> The old <b>PrivateKey</b> write routines are retained for compatibility. New applications should write private keys using the <b>PEM_write_bio_PKCS8PrivateKey()</b> or <b>PEM_write_PKCS8PrivateKey()</b> routines because they are more secure (they use an iteration count of 2048 whereas the traditional routines use a count of 1) unless compatibility with older versions of OpenSSL is important. <p class=Pp>The <b>PrivateKey</b> read routines can be used in all applications because they handle all formats transparently.</p><p class=Pp>A frequent cause of problems is attempting to use the PEM routines like this:</p><p class=Pp></p><pre>
+ X509 *x;
+
+ PEM_read_bio_X509(bp, &amp;x, 0, NULL);
+</pre><p class=Pp>this is a bug because an attempt will be made to reuse the data at <b>x</b> which is an uninitialised pointer.</p><p class=Pp>These functions make no assumption regarding the pass phrase received from the password callback. It will simply be treated as a byte sequence.</p></section><section class=Sh><h2 class=Sh id=PEM_ENCRYPTION_FORMAT><a class=permalink href=#PEM_ENCRYPTION_FORMAT>PEM ENCRYPTION FORMAT</a></h2> These old <b>PrivateKey</b> routines use a non standard technique for encryption. <p class=Pp>The private key (or other data) takes the following form:</p><p class=Pp></p><pre>
+ -----BEGIN RSA PRIVATE KEY-----
+ Proc-Type: 4,ENCRYPTED
+ DEK-Info: DES-EDE3-CBC,3F17F5316E2BAC89
+
+ ...base64 encoded data...
+ -----END RSA PRIVATE KEY-----
+</pre><p class=Pp>The line beginning with <i>Proc-Type</i> contains the version and the protection on the encapsulated data. The line beginning <i>DEK-Info</i> contains two comma separated values: the encryption algorithm name as used by <b>EVP_get_cipherbyname()</b> and an initialization vector used by the cipher encoded as a set of hexadecimal digits. After those two lines is the base64-encoded encrypted data.</p><p class=Pp>The encryption key is derived using <b>EVP_BytesToKey()</b>. The cipher's initialization vector is passed to <b>EVP_BytesToKey()</b> as the <b>salt</b> parameter. Internally, <b>PKCS5_SALT_LEN</b> bytes of the salt are used (regardless of the size of the initialization vector). The user's password is passed to <b>EVP_BytesToKey()</b> using the <b>data</b> and <b>datal</b> parameters. Finally, the library uses an iteration count of 1 for <b>EVP_BytesToKey()</b>.</p><p class=Pp>The <b>key</b> derived by <b>EVP_BytesToKey()</b> along with the original initialization vector is then used to decrypt the encrypted data. The <b>iv</b> produced by <b>EVP_BytesToKey()</b> is not utilized or needed, and NULL should be passed to the function.</p><p class=Pp>The pseudo code to derive the key would look similar to:</p><p class=Pp></p><pre>
+ EVP_CIPHER* cipher = EVP_des_ede3_cbc();
+ EVP_MD* md = EVP_md5();
+
+ unsigned int nkey = EVP_CIPHER_key_length(cipher);
+ unsigned int niv = EVP_CIPHER_iv_length(cipher);
+ unsigned char key[nkey];
+ unsigned char iv[niv];
+
+ memcpy(iv, HexToBin("3F17F5316E2BAC89"), niv);
+ rc = EVP_BytesToKey(cipher, md, iv /*salt*/, pword, plen, 1, key, NULL /*iv*/);
+ if (rc != nkey)
+     /* Error */
+
+ /* On success, use key and iv to initialize the cipher */
+</pre></section><section class=Sh><h2 class=Sh id=BUGS><a class=permalink href=#BUGS>BUGS</a></h2> The PEM read routines in some versions of OpenSSL will not correctly reuse an existing structure. Therefore, the following: <p class=Pp></p><pre>
+ PEM_read_bio_X509(bp, &amp;x, 0, NULL);
+</pre><p class=Pp>where <b>x</b> already contains a valid certificate, may not work, whereas:</p><p class=Pp></p><pre>
+ X509_free(x);
+ x = PEM_read_bio_X509(bp, NULL, 0, NULL);
+</pre><p class=Pp>is guaranteed to work.</p></section><section class=Sh><h2 class=Sh id=RETURN_VALUES><a class=permalink href=#RETURN_VALUES>RETURN VALUES</a></h2> The read routines return either a pointer to the structure read or NULL if an error occurred. <p class=Pp>The write routines return 1 for success or 0 for failure.</p></section><section class=Sh><h2 class=Sh id=EXAMPLES><a class=permalink href=#EXAMPLES>EXAMPLES</a></h2> Although the PEM routines take several arguments in almost all applications most of them are set to 0 or NULL. <p class=Pp>Read a certificate in PEM format from a BIO:</p><p class=Pp></p><pre>
+ X509 *x;
+
+ x = PEM_read_bio_X509(bp, NULL, 0, NULL);
+ if (x == NULL)
+     /* Error */
+</pre><p class=Pp>Alternative method:</p><p class=Pp></p><pre>
+ X509 *x = NULL;
+
+ if (!PEM_read_bio_X509(bp, &amp;x, 0, NULL))
+     /* Error */
+</pre><p class=Pp>Write a certificate to a BIO:</p><p class=Pp></p><pre>
+ if (!PEM_write_bio_X509(bp, x))
+     /* Error */
+</pre><p class=Pp>Write a private key (using traditional format) to a BIO using triple DES encryption, the pass phrase is prompted for:</p><p class=Pp></p><pre>
+ if (!PEM_write_bio_PrivateKey(bp, key, EVP_des_ede3_cbc(), NULL, 0, 0, NULL))
+     /* Error */
+</pre><p class=Pp>Write a private key (using PKCS#8 format) to a BIO using triple DES encryption, using the pass phrase "hello":</p><p class=Pp></p><pre>
+ if (!PEM_write_bio_PKCS8PrivateKey(bp, key, EVP_des_ede3_cbc(),
+                                    NULL, 0, 0, "hello"))
+     /* Error */
+</pre><p class=Pp>Read a private key from a BIO using a pass phrase callback:</p><p class=Pp></p><pre>
+ key = PEM_read_bio_PrivateKey(bp, NULL, pass_cb, "My Private Key");
+ if (key == NULL)
+     /* Error */
+</pre><p class=Pp>Skeleton pass phrase callback:</p><p class=Pp></p><pre>
+ int pass_cb(char *buf, int size, int rwflag, void *u)
+ {
+
+     /* We'd probably do something else if 'rwflag' is 1 */
+     printf("Enter pass phrase for \"%s\"\n", (char *)u);
+
+     /* get pass phrase, length 'len' into 'tmp' */
+     char *tmp = "hello";
+     if (tmp == NULL) /* An error occurred */
+         return -1;
+
+     size_t len = strlen(tmp);
+
+     if (len &gt; size)
+         len = size;
+     memcpy(buf, tmp, len);
+     return len;
+ }
+</pre></section><section class=Sh><h2 class=Sh id=SEE_ALSO><a class=permalink href=#SEE_ALSO>SEE ALSO</a></h2><b>EVP_EncryptInit</b>(3), <b>EVP_BytesToKey</b>(3), <b>passphrase-encoding</b>(7) </section><section class=Sh><h2 class=Sh id=HISTORY><a class=permalink href=#HISTORY>HISTORY</a></h2> The old Netscape certificate sequences were no longer documented in OpenSSL 1.1.0; applications should use the PKCS7 standard instead as they will be formally deprecated in a future releases. </section><section class=Sh><h2 class=Sh id=COPYRIGHT><a class=permalink href=#COPYRIGHT>COPYRIGHT</a></h2> Copyright 2001-2020 The OpenSSL Project Authors. All Rights Reserved. <p class=Pp>Licensed under the OpenSSL license (the "License"). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at &lt;https://www.openssl.org/source/license.html&gt;.</p></section></div><table class=foot><tr><td class=foot-date>2020-09-22</td><td class=foot-os>1.1.1h</td></tr></table></div></div><html><body><footer><p>©️ 2023 Inobulles</p></footer></body></html></body></html>
